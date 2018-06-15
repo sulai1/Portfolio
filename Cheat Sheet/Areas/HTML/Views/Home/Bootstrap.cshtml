@@ -4,34 +4,77 @@
 }
 
 <h2>Bootstrap</h2>
+<!-- #region Intro-->
+<h3>Introduction</h3>
+<p>
+    Bootstrap is framework for building responsive, mobile-first sites.
+    Bootstrap is developed mobile first, a strategy in which we optimize code for mobile devices first and then scale up components as necessary using CSS media queries.
+    A detailed introduction can be found <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/">here</a>.
+</p>
 
 <h3>Installation</h3>
-This guid follows <a href="https://stackoverflow.com/questions/48481003/how-to-use-bootstrap-4-in-asp-net-core">this guide</a> from stack overflow and targets ASP.NET projects.
-As for now when a new project is created bootstrap v3.3.7 is allready referenced in the _Layout.cshtml, but can be replaced with a newer version and a more sophisticated way is described in the article mention above.
-In order to install Bootstrap we need to <a href="https://getbootstrap.com/docs/4.0/getting-started/download/">download the compiled files</a>.
-We also need jQuery for which we need a <a href="https://jquery.com/download/">single file from the download site</a>. These files then need to be referenced from the project in the _Layout.cshtml.
+<p>
+    This guid follows <a href="https://stackoverflow.com/questions/48481003/how-to-use-bootstrap-4-in-asp-net-core">this guide</a> from stack overflow and targets ASP.NET projects.
+    As for now when a new project is created bootstrap v3.3.7 is allready referenced in the _Layout.cshtml and the according files are located in the wwwroot's lib folder, but can be replaced with a newer version and a more sophisticated way is described in the article mention above.
+    In order to install Bootstrap we need to <a href="https://getbootstrap.com/docs/4.0/getting-started/download/">download the compiled files</a>.
+    We also need jQuery for which we need a <a href="https://jquery.com/download/">single file from the download site</a>. These files then need to be referenced from the project in the _Layout.cshtml.
+</p>
+<!-- #endregion -->
 
-
+<!-- #region Containers -->
 <h3>Containers</h3>
-<h4>Container</h4>
+Bootstrap uses responsive breakpoints. These breakpoints are mostly based on minimum viewport widths. The media query ranges can be found <a href="https://getbootstrap.com/docs/4.0/layout/overview/#responsive-breakpoints">here</a>. Containers are automaticaly resized according to these ranges.
+<h4>container</h4>
 <div class="breadcrumb">
     <p>
-        The container tag makes it responsive, but it always has a fixed width.
+        The container tag makes it incrementaly resize depending on the viewport width.
     </p>
-    <code class="breadcrumb" style="background-color:#b5b5b5">
-        &lt;div class="container"&gt;
-        ...
-        &lt;/div&gt;
-    </code>
+<pre><code class="html">&lt;div class="container"&gt;
+...
+&lt;/div&gt;</code></pre>
+    <div class="container example"></div>
 </div>
 
+<h4>container-fluid</h4>
 <div class="breadcrumb">
     <p>
-        The container tag makes it responsive, but it always has a fixed width.
+        The container tag makes it continuously resize.
     </p>
-    <code class="breadcrumb" style="background-color:#b5b5b5">
-        &lt;div class="container"&gt;
-        ...
-        &lt;/div&gt;
-    </code>
+
+<pre><code class="html">&lt;div class="container-fluid"&gt;
+...
+&lt;/div&gt;</code></pre>
+    <div class="container-fluid example"></div>
 </div>
+
+<!-- #endregion -->
+
+<!-- #region Grid -->
+<h3>Grids</h3>
+<p>
+    Bootstrap’s grid system uses a series of containers, rows, and columns to layout and align content.
+    Content should only be placed in columns not in rows, and they have to be defined within a container.
+</p>
+<h4>Equaly sized columns</h4>
+<div class="breadcrumb">
+    <p>
+        If you need columns that simply have the same size, they are defined in a row as follows:
+    </p>
+<pre><code class="html">&lt;div class="row"&gt;
+    &lt;div class="col"&gt;
+    ...
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>.
+    <div class="container example">
+        <div class="row">
+            <div class="col">
+                Column 1
+            </div>
+            <div class="col">
+                Column 2
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #endregion -->

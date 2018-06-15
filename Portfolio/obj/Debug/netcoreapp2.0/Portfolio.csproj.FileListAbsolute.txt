@@ -1,0 +1,12 @@
+C:\Users\sulai\source\repos\Portfolio\Portfolio\bin\Debug\netcoreapp2.0\Portfolio.deps.json
+C:\Users\sulai\source\repos\Portfolio\Portfolio\bin\Debug\netcoreapp2.0\Portfolio.runtimeconfig.json
+C:\Users\sulai\source\repos\Portfolio\Portfolio\bin\Debug\netcoreapp2.0\Portfolio.runtimeconfig.dev.json
+C:\Users\sulai\source\repos\Portfolio\Portfolio\bin\Debug\netcoreapp2.0\Portfolio.dll
+C:\Users\sulai\source\repos\Portfolio\Portfolio\bin\Debug\netcoreapp2.0\Portfolio.pdb
+C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.0\Portfolio.csprojAssemblyReference.cache
+C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.0\Portfolio.csproj.CoreCompileInputs.cache
+C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.0\Portfolio.AssemblyInfoInputs.cache
+C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.0\Portfolio.AssemblyInfo.cs
+C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.0\Portfolio.dll
+C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.0\Portfolio.pdb

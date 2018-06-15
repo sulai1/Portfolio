@@ -1,0 +1,11 @@
+C:\Users\sulai\source\repos\Portfolio\Cheat Sheet\bin\Debug\netcoreapp2.0\Cheat Sheet.deps.json
+C:\Users\sulai\source\repos\Portfolio\Cheat Sheet\bin\Debug\netcoreapp2.0\Cheat Sheet.runtimeconfig.json
+C:\Users\sulai\source\repos\Portfolio\Cheat Sheet\bin\Debug\netcoreapp2.0\Cheat Sheet.runtimeconfig.dev.json
+C:\Users\sulai\source\repos\Portfolio\Cheat Sheet\bin\Debug\netcoreapp2.0\Cheat Sheet.dll
+C:\Users\sulai\source\repos\Portfolio\Cheat Sheet\bin\Debug\netcoreapp2.0\Cheat Sheet.pdb
+C:\Users\sulai\source\repos\Portfolio\Cheat Sheet\obj\Debug\netcoreapp2.0\Cheat Sheet.csproj.CoreCompileInputs.cache
+C:\Users\sulai\source\repos\Portfolio\Cheat Sheet\obj\Debug\netcoreapp2.0\Cheat Sheet.AssemblyInfoInputs.cache
+C:\Users\sulai\source\repos\Portfolio\Cheat Sheet\obj\Debug\netcoreapp2.0\Cheat Sheet.AssemblyInfo.cs
+C:\Users\sulai\source\repos\Portfolio\Cheat Sheet\obj\Debug\netcoreapp2.0\Cheat Sheet.dll
+C:\Users\sulai\source\repos\Portfolio\Cheat Sheet\obj\Debug\netcoreapp2.0\Cheat Sheet.pdb
+C:\Users\sulai\source\repos\Portfolio\Cheat Sheet\obj\Debug\netcoreapp2.0\Cheat Sheet.csprojAssemblyReference.cache

@@ -18,5 +18,10 @@ namespace Cheat_Sheet.Areas.HTML.Controllers
         {
             return View();
         }
+
+        public IActionResult Less()
+        {
+            return View();
+        }
     }
 }

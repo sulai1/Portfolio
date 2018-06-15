@@ -21,4 +21,8 @@
     <Folder Include="Areas\HTML\Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\css\examples.css" />
+  </ItemGroup>
+
 </Project>
