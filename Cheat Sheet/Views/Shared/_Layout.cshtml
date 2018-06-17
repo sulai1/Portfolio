@@ -17,23 +17,23 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
+                <a asp-area=@ViewData["Area"] asp-controller="Home" asp-action="Index" class="navbar-brand">@ViewData["Category"]</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Cheat Sheets</a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area=null asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area=null asp-controller="CheatSheet" asp-action="Index">Cheat Sheets</a></li>
-                    <li><a asp-area=null asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area=null asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <ul class="mr-auto navbar-nav">
+                    <li class="nav-item active"><a class="nav-link" asp-area=null asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="nav-item active"><a class="nav-link" asp-area=null asp-controller="CheatSheet" asp-action="Index">Cheat Sheets</a></li>
+                    <li class="nav-item active"><a class="nav-link" asp-area=null asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li class="nav-item active"><a class="nav-link" asp-area=null asp-controller="Home" asp-action="About">About</a></li>
                 </ul>
             </div>
         </div>
@@ -62,7 +62,5 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
-    @RenderSection("Scripts", required: false)
 </body>
 </html>

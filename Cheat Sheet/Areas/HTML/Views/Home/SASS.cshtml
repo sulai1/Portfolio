@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "SASS";
+}
+
+<h2>SASS</h2>
+<h3>Introduction</h3>
+SASS is an extension to CSS and makes creating style sheets more compact and less repetitive.
+This is achieved by compiling SASS files into CSS files.
+This can be automatically done when you save your SASS file with the watch command.
+To use SASS in Visual Studio 2017 the simplest way is to add the <text class="text-primary">Web Comiler</text> package to your solution.
+When you create a new SASS file you only have to compile it once by right clicking it in the Solution Explorer and select Web Compiler &gt; Compile File.
+From now on every time you save your SASS file it will be automatically compiled for you, generating the css file and also a minified version which you then can reference in your project.
+For detailed information visit <a href="https://sass-lang.com/guide">this guide</a>.
+
+<h3>Variables</h3>
+Variables can be used to store things like colors and reuse them.
+All you have to do is use the <kbd>$</kbd> give it a name and define your value.
+To use it all you have to do now, is to put it where you want it to have it used.
+<pre><code class="css">$my-color: #333
+body{
+    color: $my-color;
+}
+</code></pre>
+
+<h3>Nesting</h3>
+SASS takes advantage of the nested and visual hierarchyof HTML files. Nesting allows you to also nest your CSS files.
+So they only affect the inner classes if they are inside the outer class. This makes CSS files more readable, but
+nesting should be used with caution, since it can make it hard to maintain if it is used extensively.
+<pre><code></code></pre>

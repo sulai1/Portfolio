@@ -2,14 +2,16 @@
 @{
     ViewData["Title"] = "Bootstrap";
 }
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <h2>Bootstrap</h2>
-<!-- #region Intro-->
+<!-- #region Intro -->
 <h3>Introduction</h3>
 <p>
     Bootstrap is framework for building responsive, mobile-first sites.
     Bootstrap is developed mobile first, a strategy in which we optimize code for mobile devices first and then scale up components as necessary using CSS media queries.
     A detailed introduction can be found <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/">here</a>.
+    All of the following is tested using Bootstrap 4.0.0 and sometimes it is mentioned if something had changed from bootstrap 3 but not tested with an older version.
 </p>
 
 <h3>Installation</h3>
@@ -53,7 +55,7 @@ Bootstrap uses responsive breakpoints. These breakpoints are mostly based on min
 <!-- #region Grid -->
 <h3>Grids</h3>
 <p>
-    Bootstrap’s grid system uses a series of containers, <font color="coral">rows</font>, and <font color="cornflowerblue">columns</font> to layout and align content.
+    Bootstrap’s grid system uses a series of <font class="font-example">containers</font>, <font class="font-example-row">rows</font>, and <font class="font-example-col">columns</font>(colors indicate the borders of these elements) to layout and align content.
     Content should only be placed in columns not in rows, and they have to be defined within a container.
     Also columns should only be placed in rows, because they counteract the the paddings of columns with negative margins.
     </>
@@ -168,4 +170,33 @@ Bootstrap uses responsive breakpoints. These breakpoints are mostly based on min
         </div>
     </div>
 </div>
+<!-- #endregion Grid-->
+<!-- #region Navbar -->
+<h3>Navbar</h3>
+<div class="breadcrumb">
+    <p>
+        As discussed before when creating a ASP.NET MVC 6 project the initial version of bootstrap is not 4.0.0.
+        This means that the generated navbar does not display correct.
+        The navbar code is located in the Views &gt; Shared &gt; _Layout.cshtml shich is shared by all Views(if it contains a _ViewStart.cshtml file that defines it(more on that in the
+        <a asp-area="MVC6" asp-controller="Home" asp-action="Index">MVC-6 cheatsheet</a>))
+        To change this to behave correct, we alter a few things, where <a href="https://stackoverflow.com/questions/46672365/boostrap-4-navbar-does-not-work">this article</a> was very helpful.
+        The main changes where the following:
+        <ul>
+            <li>
+                The sizing of the navbar is defined by the <code>navbar-expand-{size}</code> class.
+            </li>
+            <li>
+                The button class to expand the navbar on small viewports is now called <code>navbar-toggler</code> instead of <code>navbar-toggle</code>.
+            </li>
+            <li>
+                Use the <code>navbar-toggler-icon</code> class in the first span inside the navbar button to display the familliar icon.
+            </li>
+            <li>
+                To make the navbar stay on top of your page even when scrolled down, the navbar can use the <code>fixed-top</code> class (note the change from bootstrap 3's <code>navbar-fixed-top</code>).
+            </li>
+        </ul>
+    </p>
+</div>
+<!-- #endregion -->
+<!-- #region Sidebar-->
 <!-- #endregion -->

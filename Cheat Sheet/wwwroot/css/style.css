@@ -1,0 +1,26 @@
+﻿.breadcrumb {
+  background-color: lightcyan; }
+
+.example, .example-row, .example-col {
+  border: solid;
+  min-height: 5ex;
+  border-radius: 1ex; }
+
+.font-example {
+  color: darkseagreen; }
+
+.font-example-row {
+  color: coral; }
+
+.font-example-col {
+  color: cornflowerblue; }
+
+.example {
+  border-color: darkseagreen; }
+
+.example-row {
+  border-color: coral; }
+
+.example-col {
+  border-color: cornflowerblue; }
+

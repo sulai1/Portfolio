@@ -19,7 +19,12 @@ namespace Cheat_Sheet.Areas.HTML.Controllers
             return View();
         }
 
-        public IActionResult Less()
+        public IActionResult LESS()
+        {
+            return View();
+        }
+
+        public IActionResult SASS()
         {
             return View();
         }
