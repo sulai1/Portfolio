@@ -7,3 +7,13 @@
     min-height: 5ex;
     border-radius: 1ex;
 }
+.example-row {
+    border: solid;
+    border-color: coral;
+    border-radius: 1ex;
+}
+.example-col {
+    border: solid;
+    border-color: cornflowerblue;
+    border-radius: 1ex;
+}
