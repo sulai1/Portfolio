@@ -13,5 +13,10 @@ namespace Cheat_Sheet.Areas.MVC6.Controllers
         {
             return View();
         }
+
+        public IActionResult ProjectStructure()
+        {
+            return View();
+        }
     }
 }

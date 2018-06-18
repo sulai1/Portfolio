@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,6 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Article\Controllers\" />
+    <Folder Include="Areas\Article\Data\" />
+    <Folder Include="Areas\Article\Views\" />
     <Folder Include="Areas\MVC6\Data\" />
     <Folder Include="Areas\MVC6\Models\" />
     <Folder Include="Data\" />

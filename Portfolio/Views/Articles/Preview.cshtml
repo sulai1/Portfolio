@@ -1,0 +1,31 @@
+﻿@model (Article article, IEnumerable<Section> sections)
+
+
+<div class="container">
+    <h2>@Model.article.Title h</h2>
+    @if (@Model.sections != null)
+    {
+        @foreach (var item in @Model.sections)
+        {
+            <h3>@item.Title</h3>
+            <hr />
+            <div class="breadcrumb">
+                <div class="col">
+                    @if (@item.Example != null)
+                    {
+                        @Html.Raw(@item.Content)
+                        <hr />
+                        <h4>Example</h4>
+                        <pre><code class="html">@item.Example</code></pre>
+                        @Html.Raw(@item.Example)
+                    }
+                    else
+                    {
+                        <p class="alert-danger">To Do! Missing Content.</p>
+                    }
+                </div>
+            </div>
+        }
+
+    }
+</div>
