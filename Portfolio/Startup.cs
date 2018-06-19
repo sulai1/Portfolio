@@ -44,7 +44,11 @@ namespace Portfolio
                             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
+            services.Configure<SecurityStampValidatorOptions>(options =>
+            {
+                // enables immediate logout, after updating the user's stat.
+                options.ValidationInterval = TimeSpan.Zero;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

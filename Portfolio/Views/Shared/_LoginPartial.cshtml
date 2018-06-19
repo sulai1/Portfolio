@@ -7,19 +7,16 @@
 {
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-            </li>
-            <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
-            </li>
+            <li class="nav-item active"><a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a></li>
+            <li class="nav-item active"><button type="submit" class="btn btn-link navbar-btn nav-link">Logout</button></li>
+            <li class="nav-item active"><a class="nav-link" asp-area="" asp-controller="Articles" asp-action="Index">My Cheat Sheets</a></li>
         </ul>
     </form>
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
-        <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+        <li class="nav-item active"><a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+        <li class="nav-item active"> <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a></li>
     </ul>
 }

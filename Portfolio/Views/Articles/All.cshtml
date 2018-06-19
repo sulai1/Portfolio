@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Portfolio.Models.Article>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                <a asp-action="Preview" asp-route-id="@item.ArticleId">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

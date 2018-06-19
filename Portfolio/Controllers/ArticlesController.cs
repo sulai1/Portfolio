@@ -31,6 +31,12 @@ namespace Portfolio.Controllers
             return View(article);
         }
 
+        public IActionResult All()
+        {
+            var article = _context.Article.AsEnumerable();
+            return View(article);
+        }
+
 
         // GET: Articles/Details/5
         public async Task<IActionResult> Details(int? id)
