@@ -37,6 +37,18 @@ namespace Portfolio.Controllers
             return View(article);
         }
 
+        public IActionResult Categories()
+        {
+            var categories = _context.Article.Select(a => a.Category).Distinct();
+            return View(categories);
+        }
+
+        public IActionResult ByCategory(string category)
+        {
+            var byCategory = from article in _context.Article where article.Category.Contains(category) select article;
+            return View(byCategory);
+        }
+
 
         // GET: Articles/Details/5
         public async Task<IActionResult> Details(int? id)

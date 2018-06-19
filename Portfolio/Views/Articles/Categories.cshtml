@@ -1,0 +1,11 @@
+﻿@model IEnumerable<string>
+
+
+<div class="container-fluid">
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li><a asp-action="ByCategory" asp-route-category="@item">@item</a></li>
+        }
+    </ul>
+</div>

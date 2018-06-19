@@ -2,6 +2,9 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="container">
-    <a asp-controller="Articles" asp-action="All">Browse Cheatsheets</a>
+<div class="container-fluid">
+    <ul>
+        <li><a asp-controller="Articles" asp-action="All">Browse Cheatsheets</a></li>
+        <li><a asp-controller="Articles" asp-action="Categories">Browse Categories</a></li>
+    </ul>
 </div>
