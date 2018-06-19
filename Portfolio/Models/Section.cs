@@ -11,6 +11,8 @@ namespace Portfolio.Models
     {
         public int SectionId { get; set; }
         [Required]
+        public int Index { get; set; }
+        [Required]
         public string Title { get; set; }
         public string Content { get; set; }
         public string Example { get; set; }

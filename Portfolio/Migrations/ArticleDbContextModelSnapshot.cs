@@ -24,6 +24,8 @@ namespace Portfolio.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Category");
+
                     b.Property<string>("Title")
                         .IsRequired();
 
@@ -44,7 +46,10 @@ namespace Portfolio.Migrations
 
                     b.Property<string>("Example");
 
-                    b.Property<string>("Title");
+                    b.Property<int>("Index");
+
+                    b.Property<string>("Title")
+                        .IsRequired();
 
                     b.HasKey("SectionId");
 

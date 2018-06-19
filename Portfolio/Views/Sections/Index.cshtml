@@ -1,13 +1,13 @@
-﻿@model IEnumerable<Portfolio.Models.Section>
+﻿@model Portfolio.Models.Article
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = Model.Title;
 }
 
-<h2>Index</h2>
+<h2>@Model.Title</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New Section</a>
 </p>
 <table class="table">
     <thead>
@@ -15,33 +15,25 @@
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Content)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Example)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Content)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Example)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SectionId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SectionId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SectionId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Sections)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.SectionId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.SectionId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.SectionId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<a asp-controller="Articles" asp-action="Edit" asp-route-id=@Model.ArticleId>Back To Article</a>

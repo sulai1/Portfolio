@@ -9,22 +9,22 @@
 <h4>Section</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
+                <input asp-for="Title" class="form-control" placeholder="Edit Title"/>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Content" class="control-label"></label>
-                <input asp-for="Content" class="form-control" />
+                <label asp-for="Content" class="control-label" placeholder="Edit Content"></label>
+                <textarea asp-for="Content" class="form-control"> </textarea>
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Example" class="control-label"></label>
-                <input asp-for="Example" class="form-control" />
+                <textarea asp-for="Example" class="form-control" placeholder="Edit Example"></textarea>
                 <span asp-validation-for="Example" class="text-danger"></span>
             </div>
             <div class="form-group">

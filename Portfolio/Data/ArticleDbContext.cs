@@ -35,5 +35,13 @@ namespace Portfolio.Data
         public DbSet<Portfolio.Models.Article> Article { get; set; }
 
         public DbSet<Portfolio.Models.Section> Section { get; set; }
+
+        public async Task<Article> ArticleWithSections(int id)
+        {
+            var article =  await Article.FindAsync(id);
+            await Entry(article).Collection(x => x.Sections).LoadAsync();
+            article.Sections.OrderBy(x => x.Index);
+            return article;
+        }
     }
 }

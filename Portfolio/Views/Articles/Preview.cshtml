@@ -1,31 +1,54 @@
-﻿@model (Article article, IEnumerable<Section> sections)
+﻿@model Portfolio.Models.Article
 
 
 <div class="container">
-    <h2>@Model.article.Title h</h2>
-    @if (@Model.sections != null)
-    {
-        @foreach (var item in @Model.sections)
-        {
-            <h3>@item.Title</h3>
-            <hr />
-            <div class="breadcrumb">
-                <div class="col">
-                    @if (@item.Example != null)
+    <div class="row flex-sm-row-reverse">
+        <div class="col-auto flex-sm-column-reverse">
+            @if (Model.Sections != null)
+            {
+                <h3>Overview</h3>
+                <ul class="list-group">
+                    @foreach (var item in Model.Sections)
                     {
-                        @Html.Raw(@item.Content)
-                        <hr />
-                        <h4>Example</h4>
-                        <pre><code class="html">@item.Example</code></pre>
-                        @Html.Raw(@item.Example)
+                        <li class="list-group-item"><a href="#@item.Title">@item.Title</a></li>
                     }
-                    else
-                    {
-                        <p class="alert-danger">To Do! Missing Content.</p>
-                    }
-                </div>
-            </div>
-        }
+                </ul>
+            }
+        </div>
+        <div class="col">
+            <h2>@Model.Title</h2>
+            @if (@Model.Sections != null)
+            {
+                @foreach (var item in @Model.Sections)
+                {
+                    <h3 id="@item.Title">@item.Title</h3>
+                    <hr />
+                    <div class="breadcrumb">
+                        <div class="row">
+                            <div class="col">
+                                @if (@item.Content != null)
+                                {
+                                    @Html.Raw(@item.Content)
+                                }
+                                else
+                                {
+                                    <p class="alert-danger">To Do! Missing Content.</p>
+                                }
 
-    }
+                                <hr />
+                                <div>
+                                    @if (@item.Example != null)
+                                    {
+                                        <h4>Example</h4>
+                                        <pre><code class="html">@item.Example</code></pre>
+                                        @Html.Raw(@item.Example)
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
 </div>

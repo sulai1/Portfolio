@@ -10,6 +10,7 @@ namespace Portfolio.Models
     public class Article
     {
         public int ArticleId { get; set; }
+        public string Category { get; set; }
         [Required]
         public string Title { get; set; }
         public virtual ICollection<Section> Sections { get; set; }
