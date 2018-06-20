@@ -62,7 +62,7 @@ namespace Portfolio.Controllers
                 _context.Add(section);
                 await _context.SaveChangesAsync();
                 //TODO type check
-                return RedirectToAction(nameof(Index), new { id = id });
+                return RedirectToAction(nameof(Index), new { id });
             }
             return View(section);
         }

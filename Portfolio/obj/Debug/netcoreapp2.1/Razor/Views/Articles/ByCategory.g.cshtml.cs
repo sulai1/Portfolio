@@ -63,7 +63,7 @@ using Portfolio.Models;
             WriteLiteral("            <li>\r\n                ");
             EndContext();
             BeginContext(154, 70, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "784ae657cc0b4cab81d44b477e57dabb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd5b321ac61b48cf96a517db391095d3", async() => {
                 BeginContext(210, 10, false);
 #line 8 "C:\Users\sulai\source\repos\Portfolio\Portfolio\Views\Articles\ByCategory.cshtml"
                                                                   Write(item.Title);
