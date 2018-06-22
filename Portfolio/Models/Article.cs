@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,5 +15,9 @@ namespace Portfolio.Models
         [Required]
         public string Title { get; set; }
         public virtual ICollection<Section> Sections { get; set; }
+        [Required]
+        public virtual IdentityUser Owner { get; set; }
+        public virtual List<Group> Group { get; set; }
+        public bool IsPublic { get; set; }
     }
 }
