@@ -1,4 +1,5 @@
 ﻿
+using Newtonsoft.Json;
 using Portfolio.Areas.Articles.Models;
 using System;
 using System.Collections.Generic;
@@ -8,35 +9,63 @@ using System.Threading.Tasks;
 
 namespace Portfolio.Areas.Articles.Data
 {
+
     public class SectionBuilder
     {
-        public int Index { get; set; }
+
         public string Title { get; set; }
-
         public virtual List<SubSection> SubSections { get; set; }
+        public virtual List<IContent> Content { get; set; }
 
-
-        public void Deserialize(string JSon)
+        private static readonly JsonSerializerSettings settings = new JsonSerializerSettings()
         {
-            throw new NotImplementedException();
+            TypeNameHandling = TypeNameHandling.Auto
+        };
+
+
+        public SectionBuilder()
+        {
+            this.SubSections = new List<SubSection>();
+        }
+
+        public static SectionBuilder Deserialize(string JSon)
+        {
+            return JsonConvert.DeserializeObject<SectionBuilder>(JSon, settings);
         }
 
         public string Serialize()
         {
-            throw new NotImplementedException();
+            return JsonConvert.SerializeObject(this, settings);
         }
     }
 
     public class SubSection
     {
         public string Title { get; set; }
-        public virtual Content Content { get; set; }
-        public string Example { get; set; }
     }
 
-    public class Content
+    public interface IContent
+    {
+        string Text { get; set; }
+    }
+
+    public class TextContent : IContent
     {
         public string Text { get; set; }
-        public List<Blob> Image { get; set; }
+    }
+
+    public class CodeContent : TextContent
+    {
+        public string Type { get; set; }
+    }
+
+    public class ExampleContent : TextContent
+    {
+        public string Type { get; set; }
+    }
+
+    public class ImageContent : TextContent
+    {
+        public string Type { get; set; }
     }
 }

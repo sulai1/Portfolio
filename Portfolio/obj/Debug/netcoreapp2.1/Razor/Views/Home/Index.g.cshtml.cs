@@ -63,7 +63,7 @@ using Portfolio.Models;
             WriteLiteral("\r\n<div class=\"container-fluid\">\r\n    <ul>\r\n        <li>");
             EndContext();
             BeginContext(100, 88, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3c9d09efb6444fc3a4ca2d6a10cb7063", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "78cb27aea02a42fd950f82d392ddd09d", async() => {
                 BeginContext(166, 18, true);
                 WriteLiteral("Browse Cheatsheets");
                 EndContext();
@@ -89,7 +89,7 @@ using Portfolio.Models;
             WriteLiteral("</li>\r\n        <li>");
             EndContext();
             BeginContext(207, 94, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "45c43d7d35234b17a4da510f3d43dc25", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4531ce03840441899f8908b1f7741c72", async() => {
                 BeginContext(280, 17, true);
                 WriteLiteral("Browse Categories");
                 EndContext();
