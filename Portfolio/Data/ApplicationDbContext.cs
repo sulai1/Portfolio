@@ -13,8 +13,5 @@ namespace Portfolio.Data
             : base(options)
         {
         }
-
-        public DbSet<Article> Articles { get; set; }
-        public DbSet<Section> Sections { get; set; }
     }
 }

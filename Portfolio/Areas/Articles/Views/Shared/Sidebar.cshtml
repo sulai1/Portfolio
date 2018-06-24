@@ -1,0 +1,13 @@
+﻿@model Portfolio.Areas.Articles.Models.Article
+
+<div class="sidenav">
+    <div class="container bg-light">
+        <h4>Overview</h4>
+        <ul>
+            @foreach (var item in Model.Sections)
+            {
+                <li><a href="#@item.Title">@item.Title</a></li>
+            }
+        </ul>
+    </div>
+</div>
