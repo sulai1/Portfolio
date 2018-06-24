@@ -12431,6 +12431,7 @@
       "Microsoft.NETCore.App >= 2.1.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.0",
       "NUnit >= 3.10.1",
+      "Newtonsoft.Json >= 11.0.2",
       "xunit >= 2.3.1"
     ]
   },
@@ -12494,6 +12495,10 @@
           "NUnit": {
             "target": "Package",
             "version": "[3.10.1, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[11.0.2, )"
           },
           "xunit": {
             "target": "Package",
