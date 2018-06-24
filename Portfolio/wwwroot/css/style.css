@@ -1,6 +1,18 @@
 ﻿body {
   padding-top: 70px; }
 
+[aria-expanded="false"] .menu__icon--open {
+  display: block; }
+
+[aria-expanded="false"] .menu__icon--close {
+  display: none; }
+
+[aria-expanded="true"] .menu__icon--open {
+  display: none; }
+
+[aria-expanded="true"] .menu__icon--close {
+  display: block; }
+
 .breadcrumb {
   background-color: lightcyan; }
 
@@ -38,4 +50,17 @@
   background-color: #111;
   overflow-x: hidden;
   padding-top: 20px; }
+
+#sidebar.affix-top {
+  position: static;
+  margin-top: 30px;
+  width: 228px; }
+
+#sidebar.affix {
+  position: fixed;
+  top: 70px;
+  width: 228px; }
+
+.test {
+  background-image: url(../images/glyphicons/png/glyphicons-602-chevron-down.png); }
 
