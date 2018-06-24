@@ -13,6 +13,7 @@ namespace Portfolio.Areas.Articles.Data
     public class SectionBuilder
     {
 
+        enum ContentType { TEXT, CODE, EXAMPLE, IMAGE };
         public string Title { get; set; }
         public virtual List<SubSection> SubSections { get; set; }
         public virtual List<IContent> Content { get; set; }
@@ -44,28 +45,4 @@ namespace Portfolio.Areas.Articles.Data
         public string Title { get; set; }
     }
 
-    public interface IContent
-    {
-        string Text { get; set; }
-    }
-
-    public class TextContent : IContent
-    {
-        public string Text { get; set; }
-    }
-
-    public class CodeContent : TextContent
-    {
-        public string Type { get; set; }
-    }
-
-    public class ExampleContent : TextContent
-    {
-        public string Type { get; set; }
-    }
-
-    public class ImageContent : TextContent
-    {
-        public string Type { get; set; }
-    }
 }
