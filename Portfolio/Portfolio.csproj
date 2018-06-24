@@ -1,6 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
+
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>aspnet-Portfolio-5BA22D39-44E6-4622-B6C2-232BC77215E1</UserSecretsId>
   </PropertyGroup>
@@ -19,6 +20,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" PrivateAssets="All" />
+    <PackageReference Include="NUnit" Version="3.10.1" />
+    <PackageReference Include="xunit" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>

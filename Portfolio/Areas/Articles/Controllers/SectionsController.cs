@@ -58,9 +58,12 @@ namespace Portfolio.Areas.Articles.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(int id, [Bind("SectionId,Title,Content,Example")] Section section)
         {
+            var article = await _context.Articles.FindAsync(id);
+            await _context.Entry(article).Collection(x => x.Sections).LoadAsync();
+            section.Index = article.Sections.ToList().Max(x => x.Index) + 1;
+            section.ArticleId = id;
             if (ModelState.IsValid)
             {
-                section.ArticleId = id;
                 _context.Add(section);
                 await _context.SaveChangesAsync();
                 //TODO type check
