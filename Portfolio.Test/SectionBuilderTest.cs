@@ -39,7 +39,7 @@ namespace Portfolio.Test
                     },
                     new ImageContent()
                     {
-                        Text = "test.image.jpg",
+                        Path = "test.image.jpg",
                         Type = ".jpg"
                     }
                 }

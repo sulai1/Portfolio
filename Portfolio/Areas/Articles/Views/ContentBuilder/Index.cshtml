@@ -1,0 +1,31 @@
+﻿@model Portfolio.Areas.Articles.Data.SectionBuilder
+@using Portfolio.Areas.Articles.Models
+
+@{
+    ViewData["Title"] = "SectionBuilder";
+}
+
+<h2>@Model.Title</h2>
+@foreach (var c in Model.Content)
+{
+    @if (c is TextContent)
+    {
+        var text = c as TextContent;
+        <p> @text.Text </p>
+    }
+    else if (c is CodeContent)
+    {
+        var v = c as CodeContent;
+        <pre class="pre-scrollable"><code class="@v.Type">@v.Text</code></pre>
+    }
+    else if (c is ExampleContent)
+    {
+        var v = c as ExampleContent;
+        @Html.Raw(v.Text);
+    }
+    else if (c is ImageContent)
+    {
+        var v = c as ImageContent;
+        <img src="@v.Path" alt="@v.Alt" />
+    }
+}
