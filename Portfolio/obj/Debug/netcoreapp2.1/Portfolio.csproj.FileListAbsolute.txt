@@ -1,7 +1,6 @@
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Portfolio.csproj.CoreCompileInputs.cache
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Portfolio.RazorAssemblyInfo.cache
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Portfolio.RazorAssemblyInfo.cs
-C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Portfolio.AssemblyInfoInputs.cache
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Portfolio.AssemblyInfo.cs
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Portfolio.TagHelpers.input.cache
@@ -48,6 +47,7 @@ C:\Users\sulai\source\repos\Portfolio\Portfolio\bin\Debug\netcoreapp2.1\Portfoli
 C:\Users\sulai\source\repos\Portfolio\Portfolio\bin\Debug\netcoreapp2.1\Portfolio.Views.pdb
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Portfolio.Views.pdb
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Portfolio.csproj.CopyComplete
-C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Portfolio.csprojAssemblyReference.cache
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Razor\Areas\Articles\Views\_ViewImports.g.cshtml.cs
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Razor\Areas\Articles\Views\Articles\Article.g.cshtml.cs
+C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Portfolio.csprojAssemblyReference.cache
+C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
