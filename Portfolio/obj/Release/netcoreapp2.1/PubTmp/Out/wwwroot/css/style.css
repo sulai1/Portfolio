@@ -1,0 +1,66 @@
+﻿body {
+  padding-top: 70px; }
+
+[aria-expanded="false"] .menu__icon--open {
+  display: block; }
+
+[aria-expanded="false"] .menu__icon--close {
+  display: none; }
+
+[aria-expanded="true"] .menu__icon--open {
+  display: none; }
+
+[aria-expanded="true"] .menu__icon--close {
+  display: block; }
+
+.breadcrumb {
+  background-color: lightcyan; }
+
+.example, .example-row, .example-col {
+  border: solid;
+  min-height: 5ex;
+  border-radius: 1ex; }
+
+.font-example {
+  color: darkseagreen; }
+
+.font-example-row {
+  color: coral; }
+
+.font-example-col {
+  color: cornflowerblue; }
+
+.example {
+  border-color: darkseagreen; }
+
+.example-row {
+  border-color: coral; }
+
+.example-col {
+  border-color: cornflowerblue; }
+
+/* The sidenav */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px; }
+
+#sidebar.affix-top {
+  position: static;
+  margin-top: 30px;
+  width: 228px; }
+
+#sidebar.affix {
+  position: fixed;
+  top: 70px;
+  width: 228px; }
+
+.test {
+  background-image: url(../images/glyphicons/png/glyphicons-602-chevron-down.png); }
+

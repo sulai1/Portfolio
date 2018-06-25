@@ -3,15 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cheat Sheet", "Cheat Sheet\Cheat Sheet.csproj", "{9E2F5F2E-705B-4A78-AEB9-B8ADEE7DC784}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio", "Portfolio\Portfolio.csproj", "{BF41B50E-5D68-4620-BAB4-ADDC52E03F5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio.Test", "Portfolio.Test\Portfolio.Test.csproj", "{680CE736-4DC3-406D-A78D-DCCABC4A74F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio.Test", "Portfolio.Test\Portfolio.Test.csproj", "{680CE736-4DC3-406D-A78D-DCCABC4A74F4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{59804C9D-9C4F-4085-BA86-0C3FBBEBC356}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UML", "UML", "{E635AA6C-EA9B-4E58-B0FB-B49EA361F401}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Portfolio.Test.JS", "Portfolio.Test.JS\Portfolio.Test.JS.njsproj", "{BCBC50C4-A5B0-4092-AA79-844178C3C642}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BF41B50E-5D68-4620-BAB4-ADDC52E03F5C} = {BF41B50E-5D68-4620-BAB4-ADDC52E03F5C}
+		{680CE736-4DC3-406D-A78D-DCCABC4A74F4} = {680CE736-4DC3-406D-A78D-DCCABC4A74F4}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9E2F5F2E-705B-4A78-AEB9-B8ADEE7DC784}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E2F5F2E-705B-4A78-AEB9-B8ADEE7DC784}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E2F5F2E-705B-4A78-AEB9-B8ADEE7DC784}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E2F5F2E-705B-4A78-AEB9-B8ADEE7DC784}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BF41B50E-5D68-4620-BAB4-ADDC52E03F5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BF41B50E-5D68-4620-BAB4-ADDC52E03F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF41B50E-5D68-4620-BAB4-ADDC52E03F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -31,6 +31,10 @@ Global
 		{680CE736-4DC3-406D-A78D-DCCABC4A74F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{680CE736-4DC3-406D-A78D-DCCABC4A74F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{680CE736-4DC3-406D-A78D-DCCABC4A74F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCBC50C4-A5B0-4092-AA79-844178C3C642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBC50C4-A5B0-4092-AA79-844178C3C642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBC50C4-A5B0-4092-AA79-844178C3C642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBC50C4-A5B0-4092-AA79-844178C3C642}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,9 @@
+{
+  "name": "portfolio.test.js",
+  "version": "0.0.0",
+  "description": "Portfolio.Test.JS",
+  "main": "app.js",
+  "author": {
+    "name": "sulai"
+  }
+}

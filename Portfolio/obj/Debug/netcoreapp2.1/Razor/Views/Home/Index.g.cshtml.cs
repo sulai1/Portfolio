@@ -65,7 +65,7 @@ using Portfolio.Models;
             WriteLiteral("\r\n<div class=\"container-fluid\">\r\n    <ul>\r\n        <li>");
             EndContext();
             BeginContext(100, 88, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "710429282b0642f298f373b63f58af86", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bb714aa2a86b4b7f969b34531e44164d", async() => {
                 BeginContext(166, 18, true);
                 WriteLiteral("Browse Cheatsheets");
                 EndContext();
@@ -91,7 +91,7 @@ using Portfolio.Models;
             WriteLiteral("</li>\r\n        <li>");
             EndContext();
             BeginContext(207, 94, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c2b7b3c9e8d64ddbae1237acb047ebb9", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa2e17a7465047a1843071686fa6ef76", async() => {
                 BeginContext(280, 17, true);
                 WriteLiteral("Browse Categories");
                 EndContext();
@@ -117,7 +117,7 @@ using Portfolio.Models;
             WriteLiteral("</li>\r\n        <li>");
             EndContext();
             BeginContext(320, 87, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b7dbef25a3fc44a2a23e243958fbe009", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9c316def82e1490a930fdf5561e511ad", async() => {
                 BeginContext(394, 9, true);
                 WriteLiteral("Test Page");
                 EndContext();

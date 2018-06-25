@@ -2,6 +2,20 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
+      "DotLiquid/2.0.254": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard1.3/DotLiquid.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/DotLiquid.dll": {}
+        },
+        "resource": {
+          "lib/netstandard1.3/it/DotLiquid.resources.dll": {
+            "locale": "it"
+          }
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.4": {
         "type": "package",
         "dependencies": {
@@ -2773,6 +2787,78 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
+      "Newtonsoft.Json.Schema/3.0.10": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.Schema.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.Schema.dll": {}
+        }
+      },
+      "NJsonSchema/9.10.56": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/NJsonSchema.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/NJsonSchema.dll": {}
+        }
+      },
+      "NJsonSchema.CodeGeneration/9.10.56": {
+        "type": "package",
+        "dependencies": {
+          "DotLiquid": "2.0.254",
+          "Microsoft.CSharp": "4.3.0",
+          "NETStandard.Library": "1.6.1",
+          "NJsonSchema": "9.10.56",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/NJsonSchema.CodeGeneration.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/NJsonSchema.CodeGeneration.dll": {}
+        }
+      },
+      "NJsonSchema.CodeGeneration.CSharp/9.10.56": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "NJsonSchema": "9.10.56",
+          "NJsonSchema.CodeGeneration": "9.10.56",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/NJsonSchema.CodeGeneration.CSharp.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/NJsonSchema.CodeGeneration.CSharp.dll": {}
+        }
+      },
+      "NJsonSchema.CodeGeneration.TypeScript/9.10.56": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.3.0",
+          "NETStandard.Library": "1.6.1",
+          "NJsonSchema": "9.10.56",
+          "NJsonSchema.CodeGeneration": "9.10.56",
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/NJsonSchema.CodeGeneration.TypeScript.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/NJsonSchema.CodeGeneration.TypeScript.dll": {}
+        }
+      },
       "NuGet.Frameworks/4.7.0-rtm.5148": {
         "type": "package",
         "dependencies": {
@@ -4710,6 +4796,23 @@
     }
   },
   "libraries": {
+    "DotLiquid/2.0.254": {
+      "sha512": "N7HABMDDcOYniRQT8E9DXshLWU1CFGih9Z3OsXq2lx5Z3vyWau8tzwr9rVw8eCf+17PpJI8jPXWmdMqntuSuMg==",
+      "type": "package",
+      "path": "dotliquid/2.0.254",
+      "files": [
+        "LICENSE.txt",
+        "dotliquid.2.0.254.nupkg.sha512",
+        "dotliquid.nuspec",
+        "lib/net45/DotLiquid.dll",
+        "lib/net45/DotLiquid.xml",
+        "lib/net45/it/DotLiquid.resources.dll",
+        "lib/netstandard1.3/DotLiquid.dll",
+        "lib/netstandard1.3/DotLiquid.xml",
+        "lib/netstandard1.3/it/DotLiquid.resources.dll",
+        "readme.txt"
+      ]
+    },
     "Microsoft.AspNet.WebApi.Client/5.2.4": {
       "sha512": "OdBVC2bQWkf9qDd7Mt07ev4SwIdu6VmLBMTWC0D5cOP/HWSXyv/77otwtXVrAo42duNjvXOjzjP5oOI9m1+DTQ==",
       "type": "package",
@@ -7593,6 +7696,82 @@
         "lib/netstandard1.3/Newtonsoft.Json.Bson.xml",
         "newtonsoft.json.bson.1.0.1.nupkg.sha512",
         "newtonsoft.json.bson.nuspec"
+      ]
+    },
+    "Newtonsoft.Json.Schema/3.0.10": {
+      "sha512": "Iv4elFE8W6lko+0UsGGVcvsctXaLJCTg5Bul6MqRaI1t7K2ZB12dP3DWFkJh0a9qkqHFOLNQxW2KPtR30SzB4w==",
+      "type": "package",
+      "path": "newtonsoft.json.schema/3.0.10",
+      "files": [
+        "LICENSE.md",
+        "lib/net35/Newtonsoft.Json.Schema.dll",
+        "lib/net35/Newtonsoft.Json.Schema.xml",
+        "lib/net40/Newtonsoft.Json.Schema.dll",
+        "lib/net40/Newtonsoft.Json.Schema.xml",
+        "lib/net45/Newtonsoft.Json.Schema.dll",
+        "lib/net45/Newtonsoft.Json.Schema.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.Schema.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.Schema.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.Schema.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.Schema.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.Schema.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.Schema.xml",
+        "newtonsoft.json.schema.3.0.10.nupkg.sha512",
+        "newtonsoft.json.schema.nuspec"
+      ]
+    },
+    "NJsonSchema/9.10.56": {
+      "sha512": "HT7oZovNcd+epkP+sxjkoP5LBSWvQgMj98OTX8yRHxN20gvL+TShAbCMAHdpj4WEWHMXNCc1xHGEJC5ZXJNZrA==",
+      "type": "package",
+      "path": "njsonschema/9.10.56",
+      "files": [
+        "lib/net40/NJsonSchema.dll",
+        "lib/net40/NJsonSchema.xml",
+        "lib/net45/NJsonSchema.dll",
+        "lib/net45/NJsonSchema.xml",
+        "lib/netstandard1.0/NJsonSchema.dll",
+        "lib/netstandard1.0/NJsonSchema.xml",
+        "njsonschema.9.10.56.nupkg.sha512",
+        "njsonschema.nuspec"
+      ]
+    },
+    "NJsonSchema.CodeGeneration/9.10.56": {
+      "sha512": "7VsoovfC4cCgjt0jvvUbjEWjA7NUhk6k5QzOnAXIIFm5vKS+Fkm7Y75ZSwELcJeY/il7rYOB6Q8rVmwpChCWGw==",
+      "type": "package",
+      "path": "njsonschema.codegeneration/9.10.56",
+      "files": [
+        "lib/net451/NJsonSchema.CodeGeneration.dll",
+        "lib/net451/NJsonSchema.CodeGeneration.xml",
+        "lib/netstandard1.3/NJsonSchema.CodeGeneration.dll",
+        "lib/netstandard1.3/NJsonSchema.CodeGeneration.xml",
+        "njsonschema.codegeneration.9.10.56.nupkg.sha512",
+        "njsonschema.codegeneration.nuspec"
+      ]
+    },
+    "NJsonSchema.CodeGeneration.CSharp/9.10.56": {
+      "sha512": "P8Y0avzChlPgt3ukJtEToDZH+ypW2fX3HWkm5ZRU50WsAQT6wLuqjq9atsHtQPc+G54BPWg3C2ykvwMYtpOHWg==",
+      "type": "package",
+      "path": "njsonschema.codegeneration.csharp/9.10.56",
+      "files": [
+        "lib/net451/NJsonSchema.CodeGeneration.CSharp.dll",
+        "lib/net451/NJsonSchema.CodeGeneration.CSharp.xml",
+        "lib/netstandard1.3/NJsonSchema.CodeGeneration.CSharp.dll",
+        "lib/netstandard1.3/NJsonSchema.CodeGeneration.CSharp.xml",
+        "njsonschema.codegeneration.csharp.9.10.56.nupkg.sha512",
+        "njsonschema.codegeneration.csharp.nuspec"
+      ]
+    },
+    "NJsonSchema.CodeGeneration.TypeScript/9.10.56": {
+      "sha512": "PgpmgeoRTnpFsa8dmZ9NYO4P51PBMY+JwglZrTFCsIENmdDdAqMLw6Heb00u7W6L6/CdrDAbW7WNtzTyv/Py3Q==",
+      "type": "package",
+      "path": "njsonschema.codegeneration.typescript/9.10.56",
+      "files": [
+        "lib/net451/NJsonSchema.CodeGeneration.TypeScript.dll",
+        "lib/net451/NJsonSchema.CodeGeneration.TypeScript.xml",
+        "lib/netstandard1.3/NJsonSchema.CodeGeneration.TypeScript.dll",
+        "lib/netstandard1.3/NJsonSchema.CodeGeneration.TypeScript.xml",
+        "njsonschema.codegeneration.typescript.9.10.56.nupkg.sha512",
+        "njsonschema.codegeneration.typescript.nuspec"
       ]
     },
     "NuGet.Frameworks/4.7.0-rtm.5148": {
@@ -12430,8 +12609,13 @@
       "Microsoft.AspNetCore.App >= 2.1.0",
       "Microsoft.NETCore.App >= 2.1.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.0",
+      "NJsonSchema >= 9.10.56",
+      "NJsonSchema.CodeGeneration >= 9.10.56",
+      "NJsonSchema.CodeGeneration.CSharp >= 9.10.56",
+      "NJsonSchema.CodeGeneration.TypeScript >= 9.10.56",
       "NUnit >= 3.10.1",
       "Newtonsoft.Json >= 11.0.2",
+      "Newtonsoft.Json.Schema >= 3.0.10",
       "xunit >= 2.3.1"
     ]
   },
@@ -12492,6 +12676,22 @@
             "target": "Package",
             "version": "[2.1.0, )"
           },
+          "NJsonSchema": {
+            "target": "Package",
+            "version": "[9.10.56, )"
+          },
+          "NJsonSchema.CodeGeneration": {
+            "target": "Package",
+            "version": "[9.10.56, )"
+          },
+          "NJsonSchema.CodeGeneration.CSharp": {
+            "target": "Package",
+            "version": "[9.10.56, )"
+          },
+          "NJsonSchema.CodeGeneration.TypeScript": {
+            "target": "Package",
+            "version": "[9.10.56, )"
+          },
           "NUnit": {
             "target": "Package",
             "version": "[3.10.1, )"
@@ -12499,6 +12699,10 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[11.0.2, )"
+          },
+          "Newtonsoft.Json.Schema": {
+            "target": "Package",
+            "version": "[3.0.10, )"
           },
           "xunit": {
             "target": "Package",

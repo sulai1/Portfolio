@@ -4,6 +4,7 @@
 
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>aspnet-Portfolio-5BA22D39-44E6-4622-B6C2-232BC77215E1</UserSecretsId>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,9 +19,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\content.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" PrivateAssets="All" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.10" />
+    <PackageReference Include="NJsonSchema" Version="9.10.56" />
+    <PackageReference Include="NJsonSchema.CodeGeneration" Version="9.10.56" />
+    <PackageReference Include="NJsonSchema.CodeGeneration.CSharp" Version="9.10.56" />
+    <PackageReference Include="NJsonSchema.CodeGeneration.TypeScript" Version="9.10.56" />
     <PackageReference Include="NUnit" Version="3.10.1" />
     <PackageReference Include="xunit" Version="2.3.1" />
   </ItemGroup>
@@ -148,4 +158,12 @@
     <None Include="wwwroot\lib\datatables\js\jquery.dataTables.min.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\js\content.ts" />
+  </ItemGroup>
+  
+  <Target Name="HelloWorld">
+    <Message Text="Hello"></Message>
+    <Message Text="World"></Message>
+  </Target>
 </Project>

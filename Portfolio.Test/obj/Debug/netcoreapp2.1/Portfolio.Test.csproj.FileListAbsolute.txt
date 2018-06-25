@@ -17,3 +17,5 @@ C:\Users\sulai\source\repos\Portfolio\Portfolio.Test\bin\Debug\netcoreapp2.1\Por
 C:\Users\sulai\source\repos\Portfolio\Portfolio.Test\bin\Debug\netcoreapp2.1\Portfolio.dll
 C:\Users\sulai\source\repos\Portfolio\Portfolio.Test\bin\Debug\netcoreapp2.1\Portfolio.pdb
 C:\Users\sulai\source\repos\Portfolio\Portfolio.Test\obj\Debug\netcoreapp2.1\Portfolio.Test.csproj.CopyComplete
+C:\Users\sulai\source\repos\Portfolio\Portfolio.Test\obj\Debug\netcoreapp2.1\Portfolio.Test.test.resources
+C:\Users\sulai\source\repos\Portfolio\Portfolio.Test\obj\Debug\netcoreapp2.1\Portfolio.Test.csproj.GenerateResource.cache
