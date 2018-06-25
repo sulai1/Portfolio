@@ -8,37 +8,21 @@ using Portfolio.Areas.Articles.Models;
 
 namespace Portfolio.Areas.Articles
 {
+
+    [Area("Articles")]
     public class ContentBuilderController : Controller
     {
-        [Area("Articles")]
+
+        SectionBuilder builder = new SectionBuilder();
         public IActionResult Index()
         {
-            SectionBuilder builder = new SectionBuilder()
-            {
-                Title = "test",
-                Content = new List<IContent>()
-                {
-                    new TextContent()
-                    {
-                        Text="test"
-                    },
-                    new ImageContent()
-                    {
-                        Path="/images/banner1.svg",
-                        Alt="image of banner"
-                    },
-                    new CodeContent()
-                    {
-                        Text="<div>code</div>",
-                        Type="html"
-                    },
-                    new ExampleContent()
-                    {
-                        Text="<div>code</div>",
-                        Type="html"
-                    }
-                }
-            };
+            return View(builder);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Index(string type, [Bind("Title")] SectionBuilder builder)
+        {
             return View(builder);
         }
     }

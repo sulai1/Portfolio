@@ -1,31 +1,22 @@
 ﻿@model Portfolio.Areas.Articles.Data.SectionBuilder
+@using Newtonsoft.Json
 @using Portfolio.Areas.Articles.Models
-
 @{
     ViewData["Title"] = "SectionBuilder";
+    var json = JsonConvert.SerializeObject(Model);
 }
+<script type="text/javascript">
+
+</script>
 
 <h2>@Model.Title</h2>
-@foreach (var c in Model.Content)
-{
-    @if (c is TextContent)
-    {
-        var text = c as TextContent;
-        <p> @text.Text </p>
-    }
-    else if (c is CodeContent)
-    {
-        var v = c as CodeContent;
-        <pre class="pre-scrollable"><code class="@v.Type">@v.Text</code></pre>
-    }
-    else if (c is ExampleContent)
-    {
-        var v = c as ExampleContent;
-        @Html.Raw(v.Text);
-    }
-    else if (c is ImageContent)
-    {
-        var v = c as ImageContent;
-        <img src="@v.Path" alt="@v.Alt" />
-    }
-}
+<form asp-action="Index">
+    <input type="hidden" asp-for="Content" />
+    <label asp-for="Title" class="control-label"></label>
+    <input asp-for="Title" class="form-control" />
+    <input type="submit" value="Save" class="btn btn-default" />
+</form>
+
+@{await Html.RenderPartialAsync("Content", Model);}
+
+
