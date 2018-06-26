@@ -4,7 +4,6 @@
 ################################################################################
 
 /.vs
-/Portfolio/obj
-/Portfolio/bin
-/Portfolio.Test/obj
-/Portfolio.Test/bin
+obj
+bin
+*.cache

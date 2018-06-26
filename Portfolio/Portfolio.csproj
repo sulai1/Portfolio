@@ -8,8 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\Migrations\20180618160527_star.cs" />
-    <Compile Remove="Data\Migrations\20180618160527_star.Designer.cs" />
     <Compile Remove="Migrations\20180618162242_Article.cs" />
     <Compile Remove="Migrations\20180618162242_Article.Designer.cs" />
     <Compile Remove="Migrations\20180618163846_Article.cs" />

@@ -14,9 +14,9 @@ namespace Portfolio.Areas.Articles.Controllers
     [Area("Articles")]
     public class SectionsController : Controller
     {
-        private readonly ArticleDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public SectionsController(ArticleDbContext context)
+        public SectionsController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -60,7 +60,8 @@ namespace Portfolio.Areas.Articles.Controllers
         {
             var article = await _context.Articles.FindAsync(id);
             await _context.Entry(article).Collection(x => x.Sections).LoadAsync();
-            section.Index = article.Sections.ToList().Max(x => x.Index) + 1;
+
+            section.Index = article.Sections.Count == 0 ? 0 : article.Sections.ToList().Max(x => x.Index) + 1;
             section.ArticleId = id;
             if (ModelState.IsValid)
             {

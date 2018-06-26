@@ -16,10 +16,10 @@ namespace Portfolio.Areas.Articles.Controllers
     [Area("Articles")]
     public class ArticlesController : Controller
     {
-        private readonly ArticleDbContext _context;
+        private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
 
-        public ArticlesController(ArticleDbContext context, UserManager<IdentityUser> userManager)
+        public ArticlesController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _userManager = userManager;
             _context = context;
@@ -30,8 +30,8 @@ namespace Portfolio.Areas.Articles.Controllers
         {
 
             var user = _userManager.Users.FirstOrDefault(x => x.Id == _userManager.GetUserId(User));
-            await _context.Articles.LoadAsync();
-            return View(await _context.Articles.Where(x=>x.Owner==user).ToListAsync());
+            await _context.Articles.Where(x => x.Owner == user).ToListAsync();
+            return View(await _context.Articles.Where(x => x.Owner == user).ToListAsync());
         }
 
         public async Task<IActionResult> Preview(int id)
@@ -69,10 +69,12 @@ namespace Portfolio.Areas.Articles.Controllers
 
             var article = await _context.Articles
                 .FirstOrDefaultAsync(m => m.ArticleId == id);
+            
             if (article == null)
             {
                 return NotFound();
             }
+            _context.Entry(article).Reference(a => a.Owner);
 
             return View(article);
         }
@@ -106,7 +108,8 @@ namespace Portfolio.Areas.Articles.Controllers
         public async Task<IActionResult> Edit(int id)
         {
 
-            var article = await _context.ArticleWithSections(id);
+            var article = await _context.Articles.FindAsync(id);
+            _context.Entry(article).Collection(a => a.Sections).Load();
             if (article == null)
             {
                 return NotFound();
@@ -119,8 +122,9 @@ namespace Portfolio.Areas.Articles.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ArticleId,Title,Category")] Article article)
+        public async Task<IActionResult> Edit(int id, [Bind("ArticleId,Title,Category,IsPublic,OwnerId")] Article article)
         {
+            article.LastModified = DateTime.Now;
             if (id != article.ArticleId)
             {
                 return NotFound();

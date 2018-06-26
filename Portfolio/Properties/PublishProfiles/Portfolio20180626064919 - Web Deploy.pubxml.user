@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAmm6qBtJbuUuy1TxR7MPazAAAAAACAAAAAAAQZgAAAAEAACAAAAAujbQat44rlGOL9F6pHe0wH6XyHIvgkj1NJVoe5SRiRwAAAAAOgAAAAAIAACAAAADeR4Qv/jnCGY/8LhYu3hjisJWXhV01DqaLZfe/AqwhM4AAAAB0zU2OVwCXtj93S5OH0NE5DunwwFGbIyy9y0oSkvP/UeYGWYQ4xl9zEZpiSJrQlkeJO9OhZvOBBjVvguQfDGTGqMrT7VTeRAJe+8NQzsg+uzD16omz6EBc4szFONqjNNwdBBfEdOgQWkPYJQ0PWBLFg6zmh5jV5elQe/hB2x5SeEAAAAASKH8X3pwct3RGTVzxVPd49Bgxa/EMaEi/F7lytIa70/4BqRTC2XdL4TiuntdxDSdlzU6BRNj51kfkp+cvKseg</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=tcp:portfolio20180626064919dbserver.database.windows.net,1433;Initial Catalog=Portfolio_db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="Portfolio.Areas.Articles.Controllers.ArticleDbContext">
+      <Value>Data Source=tcp:portfolio20180626064919dbserver.database.windows.net,1433;Initial Catalog=Portfolio_db;User Id=sulai@portfolio20180626064919dbserver;Password=SbG631587</Value>
+    </EFMigrations>
+    <EFMigrations Include="Portfolio.Data.ApplicationDbContext">
+      <Value>Data Source=tcp:portfolio20180626064919dbserver.database.windows.net,1433;Initial Catalog=Portfolio_db;User Id=sulai@portfolio20180626064919dbserver;Password=SbG631587</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

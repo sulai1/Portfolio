@@ -14,7 +14,22 @@
             @Html.DisplayNameFor(model => model.Title)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Owner.UserName)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Group)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.LastModified)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.IsPublic)
         </dd>
     </dl>
 </div>
