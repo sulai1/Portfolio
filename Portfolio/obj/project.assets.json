@@ -2799,7 +2799,7 @@
           "lib/netstandard2.0/Newtonsoft.Json.Schema.dll": {}
         }
       },
-      "NJsonSchema/9.10.56": {
+      "NJsonSchema/9.10.57": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -2812,13 +2812,13 @@
           "lib/netstandard1.0/NJsonSchema.dll": {}
         }
       },
-      "NJsonSchema.CodeGeneration/9.10.56": {
+      "NJsonSchema.CodeGeneration/9.10.57": {
         "type": "package",
         "dependencies": {
           "DotLiquid": "2.0.254",
           "Microsoft.CSharp": "4.3.0",
           "NETStandard.Library": "1.6.1",
-          "NJsonSchema": "9.10.56",
+          "NJsonSchema": "9.10.57",
           "Newtonsoft.Json": "9.0.1"
         },
         "compile": {
@@ -2828,12 +2828,12 @@
           "lib/netstandard1.3/NJsonSchema.CodeGeneration.dll": {}
         }
       },
-      "NJsonSchema.CodeGeneration.CSharp/9.10.56": {
+      "NJsonSchema.CodeGeneration.CSharp/9.10.57": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
-          "NJsonSchema": "9.10.56",
-          "NJsonSchema.CodeGeneration": "9.10.56",
+          "NJsonSchema": "9.10.57",
+          "NJsonSchema.CodeGeneration": "9.10.57",
           "Newtonsoft.Json": "9.0.1"
         },
         "compile": {
@@ -2843,13 +2843,13 @@
           "lib/netstandard1.3/NJsonSchema.CodeGeneration.CSharp.dll": {}
         }
       },
-      "NJsonSchema.CodeGeneration.TypeScript/9.10.56": {
+      "NJsonSchema.CodeGeneration.TypeScript/9.10.57": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.3.0",
           "NETStandard.Library": "1.6.1",
-          "NJsonSchema": "9.10.56",
-          "NJsonSchema.CodeGeneration": "9.10.56",
+          "NJsonSchema": "9.10.57",
+          "NJsonSchema.CodeGeneration": "9.10.57",
           "Newtonsoft.Json": "9.0.1"
         },
         "compile": {
@@ -4791,6 +4791,19 @@
         },
         "runtime": {
           "lib/netstandard1.1/xunit.execution.dotnet.dll": {}
+        }
+      },
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "Microsoft.NETCore.App": "2.1.0"
+        },
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
         }
       }
     }
@@ -7720,10 +7733,10 @@
         "newtonsoft.json.schema.nuspec"
       ]
     },
-    "NJsonSchema/9.10.56": {
-      "sha512": "HT7oZovNcd+epkP+sxjkoP5LBSWvQgMj98OTX8yRHxN20gvL+TShAbCMAHdpj4WEWHMXNCc1xHGEJC5ZXJNZrA==",
+    "NJsonSchema/9.10.57": {
+      "sha512": "FDL/WIlgzGt+Y8dFdBQtLy7XSgYLdTZ56BgKxHJD+acoKBl8CKaeSSLGmXhQCN3UoBB/8ytiBpOWx+V5UVnIrg==",
       "type": "package",
-      "path": "njsonschema/9.10.56",
+      "path": "njsonschema/9.10.57",
       "files": [
         "lib/net40/NJsonSchema.dll",
         "lib/net40/NJsonSchema.xml",
@@ -7731,46 +7744,46 @@
         "lib/net45/NJsonSchema.xml",
         "lib/netstandard1.0/NJsonSchema.dll",
         "lib/netstandard1.0/NJsonSchema.xml",
-        "njsonschema.9.10.56.nupkg.sha512",
+        "njsonschema.9.10.57.nupkg.sha512",
         "njsonschema.nuspec"
       ]
     },
-    "NJsonSchema.CodeGeneration/9.10.56": {
-      "sha512": "7VsoovfC4cCgjt0jvvUbjEWjA7NUhk6k5QzOnAXIIFm5vKS+Fkm7Y75ZSwELcJeY/il7rYOB6Q8rVmwpChCWGw==",
+    "NJsonSchema.CodeGeneration/9.10.57": {
+      "sha512": "McDSx46B2WWJDcoFrMKwkiJcriVygKrg8yFV+ScVIGIx3YxDpGmiu7JmABjX5XKyGJY8ZskIJPGVXM4yh0917A==",
       "type": "package",
-      "path": "njsonschema.codegeneration/9.10.56",
+      "path": "njsonschema.codegeneration/9.10.57",
       "files": [
         "lib/net451/NJsonSchema.CodeGeneration.dll",
         "lib/net451/NJsonSchema.CodeGeneration.xml",
         "lib/netstandard1.3/NJsonSchema.CodeGeneration.dll",
         "lib/netstandard1.3/NJsonSchema.CodeGeneration.xml",
-        "njsonschema.codegeneration.9.10.56.nupkg.sha512",
+        "njsonschema.codegeneration.9.10.57.nupkg.sha512",
         "njsonschema.codegeneration.nuspec"
       ]
     },
-    "NJsonSchema.CodeGeneration.CSharp/9.10.56": {
-      "sha512": "P8Y0avzChlPgt3ukJtEToDZH+ypW2fX3HWkm5ZRU50WsAQT6wLuqjq9atsHtQPc+G54BPWg3C2ykvwMYtpOHWg==",
+    "NJsonSchema.CodeGeneration.CSharp/9.10.57": {
+      "sha512": "cWR6qjUrmhI+eRN0u9VFPYqvbW79L0Ao///CrQfc/cZEQIBfwXnvD3iVGynvB2rv6D9U113X/sBD1c8OYzdo1A==",
       "type": "package",
-      "path": "njsonschema.codegeneration.csharp/9.10.56",
+      "path": "njsonschema.codegeneration.csharp/9.10.57",
       "files": [
         "lib/net451/NJsonSchema.CodeGeneration.CSharp.dll",
         "lib/net451/NJsonSchema.CodeGeneration.CSharp.xml",
         "lib/netstandard1.3/NJsonSchema.CodeGeneration.CSharp.dll",
         "lib/netstandard1.3/NJsonSchema.CodeGeneration.CSharp.xml",
-        "njsonschema.codegeneration.csharp.9.10.56.nupkg.sha512",
+        "njsonschema.codegeneration.csharp.9.10.57.nupkg.sha512",
         "njsonschema.codegeneration.csharp.nuspec"
       ]
     },
-    "NJsonSchema.CodeGeneration.TypeScript/9.10.56": {
-      "sha512": "PgpmgeoRTnpFsa8dmZ9NYO4P51PBMY+JwglZrTFCsIENmdDdAqMLw6Heb00u7W6L6/CdrDAbW7WNtzTyv/Py3Q==",
+    "NJsonSchema.CodeGeneration.TypeScript/9.10.57": {
+      "sha512": "Jro4krEP4f96JdvSOhdoC3vs2bZ0njbC7qOAyrZqqoX0n7E+djOkRc0ICoDFdJT5MKP8GMW1cnZP0Y+FyhF6dQ==",
       "type": "package",
-      "path": "njsonschema.codegeneration.typescript/9.10.56",
+      "path": "njsonschema.codegeneration.typescript/9.10.57",
       "files": [
         "lib/net451/NJsonSchema.CodeGeneration.TypeScript.dll",
         "lib/net451/NJsonSchema.CodeGeneration.TypeScript.xml",
         "lib/netstandard1.3/NJsonSchema.CodeGeneration.TypeScript.dll",
         "lib/netstandard1.3/NJsonSchema.CodeGeneration.TypeScript.xml",
-        "njsonschema.codegeneration.typescript.9.10.56.nupkg.sha512",
+        "njsonschema.codegeneration.typescript.9.10.57.nupkg.sha512",
         "njsonschema.codegeneration.typescript.nuspec"
       ]
     },
@@ -12602,6 +12615,11 @@
         "xunit.extensibility.execution.2.3.1.nupkg.sha512",
         "xunit.extensibility.execution.nuspec"
       ]
+    },
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Shared.csproj",
+      "msbuildProject": "../Shared/Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -12609,13 +12627,14 @@
       "Microsoft.AspNetCore.App >= 2.1.0",
       "Microsoft.NETCore.App >= 2.1.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.0",
-      "NJsonSchema >= 9.10.56",
-      "NJsonSchema.CodeGeneration >= 9.10.56",
-      "NJsonSchema.CodeGeneration.CSharp >= 9.10.56",
-      "NJsonSchema.CodeGeneration.TypeScript >= 9.10.56",
+      "NJsonSchema >= 9.10.57",
+      "NJsonSchema.CodeGeneration >= 9.10.57",
+      "NJsonSchema.CodeGeneration.CSharp >= 9.10.57",
+      "NJsonSchema.CodeGeneration.TypeScript >= 9.10.57",
       "NUnit >= 3.10.1",
       "Newtonsoft.Json >= 11.0.2",
       "Newtonsoft.Json.Schema >= 3.0.10",
+      "Shared >= 1.0.0",
       "xunit >= 2.3.1"
     ]
   },
@@ -12648,7 +12667,11 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\sulai\\source\\repos\\Portfolio\\Shared\\Shared.csproj": {
+              "projectPath": "C:\\Users\\sulai\\source\\repos\\Portfolio\\Shared\\Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -12678,19 +12701,19 @@
           },
           "NJsonSchema": {
             "target": "Package",
-            "version": "[9.10.56, )"
+            "version": "[9.10.57, )"
           },
           "NJsonSchema.CodeGeneration": {
             "target": "Package",
-            "version": "[9.10.56, )"
+            "version": "[9.10.57, )"
           },
           "NJsonSchema.CodeGeneration.CSharp": {
             "target": "Package",
-            "version": "[9.10.56, )"
+            "version": "[9.10.57, )"
           },
           "NJsonSchema.CodeGeneration.TypeScript": {
             "target": "Package",
-            "version": "[9.10.56, )"
+            "version": "[9.10.57, )"
           },
           "NUnit": {
             "target": "Package",

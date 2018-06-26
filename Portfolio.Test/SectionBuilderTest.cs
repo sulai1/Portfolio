@@ -7,14 +7,15 @@ using Portfolio.Areas.Articles.Models;
 using System.IO;
 using NJsonSchema;
 using NJsonSchema.Generation;
+using Shared.res;
 
 namespace Portfolio.Test
 {
     public class SectionBuilderTest
     {
-        private const string SchemaPath = @"..\..\..\res\schema.json";
-        private const string JsonPath = @"..\..\..\res\object.json";
-        private const string TsPath = @"..\..\..\res\object.ts";
+        private const string SchemaName = "schema.json";
+        private const string JsonName = "object.json";
+        private const string TsName = "object.ts";
         private readonly ITestOutputHelper output;
         private readonly SectionBuilder builder;
 
@@ -68,17 +69,19 @@ namespace Portfolio.Test
             string json = builder.Serialize();
 
             // write files to disk for later examination
-            using (var writer = new StreamWriter(SchemaPath))
+            string jsonPath = Resource.instance["json"];
+            using (var writer = new StreamWriter(jsonPath + @"\" + SchemaName))
             {
                 writer.Write(schemaString);
             }
-            using (var writer = new StreamWriter(JsonPath))
+            using (var writer = new StreamWriter(jsonPath + @"\" + JsonName))
             {
                 writer.Write(json);
             }
 
-            await SectionBuilder.CreateTypescriptClass(TsPath, await SectionBuilder.CreateSchema());
-            Assert.True(SectionBuilder.Validate(json,schema));
+            string tsPath = Resource.instance["ts"];
+            await SectionBuilder.CreateTypescriptClass(tsPath + @"\" + TsName, await SectionBuilder.CreateSchema());
+            Assert.True(SectionBuilder.Validate(json, schema));
         }
 
     }

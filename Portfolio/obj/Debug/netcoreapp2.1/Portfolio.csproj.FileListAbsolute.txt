@@ -53,3 +53,5 @@ C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Razor\Ar
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Razor\Areas\Articles\Views\ContentBuilder\Content.g.cshtml.cs
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\Portfolio.csprojAssemblyReference.cache
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\sulai\source\repos\Portfolio\Portfolio\bin\Debug\netcoreapp2.1\Shared.dll
+C:\Users\sulai\source\repos\Portfolio\Portfolio\bin\Debug\netcoreapp2.1\Shared.pdb

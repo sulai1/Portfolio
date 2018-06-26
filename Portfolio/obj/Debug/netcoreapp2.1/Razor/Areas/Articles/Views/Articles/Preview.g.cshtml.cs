@@ -53,12 +53,12 @@ using Portfolio.Areas.Articles.Models;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             BeginContext(48, 90, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "becbd212c7c648e28a0ebb6034d41429", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "24de65b069984eb2997c822d1ca65c30", async() => {
                 BeginContext(54, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(60, 69, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7c462738207f4297a11250f30bbc1cea", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f7a038af2d324e97b6c74b997f4dca78", async() => {
                     BeginContext(114, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();

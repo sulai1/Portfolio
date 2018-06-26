@@ -72,7 +72,8 @@ namespace Portfolio.Areas.Articles.Data
         #region Create Typescript class
         public static string CreateTypescriptClass(JsonSchema4 schema)
         {
-            return new TypeScriptGenerator(schema).GenerateFile();
+            var settings = new TypeScriptGeneratorSettings { TypeStyle = TypeScriptTypeStyle.Class, TypeScriptVersion = 2.8m };
+            return new TypeScriptGenerator(schema,settings).GenerateFile();
         }
 
         public static async Task CreateTypescriptClass(TextWriter writer, JsonSchema4 schema)

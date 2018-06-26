@@ -65,12 +65,12 @@ using Newtonsoft.Json;
 #line default
 #line hidden
             BeginContext(179, 89, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5817cd5ad1fa4467845232b5fe680380", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "09ad85257388493084190ae3ce58a49b", async() => {
                 BeginContext(185, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(191, 68, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eec80076b5bd4ccf99b2e31aa58c78e0", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "13fd5bf568bf42a4aca4a23d2572e9d5", async() => {
                     BeginContext(244, 6, true);
                     WriteLiteral("\r\n    ");
                     EndContext();
