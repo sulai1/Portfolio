@@ -53,3 +53,5 @@ C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Release\netcoreapp2.1\Razor\
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Release\netcoreapp2.1\Razor\Areas\Articles\Views\Shared\Sidebar.g.cshtml.cs
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Release\netcoreapp2.1\Razor\Areas\Articles\Views\_ViewImports.g.cshtml.cs
 C:\Users\sulai\source\repos\Portfolio\Portfolio\obj\Release\netcoreapp2.1\Razor\Areas\Articles\Views\_ViewStart.g.cshtml.cs
+C:\Users\sulai\source\repos\Portfolio\Portfolio\bin\Release\netcoreapp2.1\Shared.dll
+C:\Users\sulai\source\repos\Portfolio\Portfolio\bin\Release\netcoreapp2.1\Shared.pdb

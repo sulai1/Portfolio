@@ -52,7 +52,7 @@ using Portfolio.Areas.Articles.Models;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             BeginContext(61, 1144, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ed96b2cdd9d44494a9292217a79930a2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f509580ba9ee400eb71be022ab0aaa70", async() => {
                 BeginContext(67, 172, true);
                 WriteLiteral("\r\n    <table id=\"articles\" class=\"table table-striped table-bordered\">\r\n        <thead>\r\n            <tr>\r\n                <th onclick=\"sortTable(0)\">\r\n                    ");
                 EndContext();
@@ -96,7 +96,7 @@ using Portfolio.Areas.Articles.Models;
                 WriteLiteral("\r\n                    </td>\r\n                    <td>\r\n                        ");
                 EndContext();
                 BeginContext(747, 156, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e9771e26592f428fbbd54023ba5fe8ab", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "11dbd4d6ac0f49b2845ec2e2d3f0b611", async() => {
                     BeginContext(802, 30, true);
                     WriteLiteral("\r\n                            ");
                     EndContext();
