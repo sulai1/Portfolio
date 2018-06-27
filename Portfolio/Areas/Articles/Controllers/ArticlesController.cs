@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Portfolio.Areas.Articles.Models;
 using Portfolio.Data;
-using Portfolio.Models;
 
 namespace Portfolio.Areas.Articles.Controllers
 {

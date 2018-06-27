@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UML", "UML", "{E635AA6C-EA9
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Portfolio.Test.TS", "Portfolio.Test.TS\Portfolio.Test.TS.njsproj", "{5371ADA0-3129-49AE-84DC-069EB4C6560C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{5A7C8505-D007-4CFC-96F5-321583E0DE8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{5A7C8505-D007-4CFC-96F5-321583E0DE8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

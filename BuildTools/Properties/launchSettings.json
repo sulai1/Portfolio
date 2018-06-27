@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BuildTools": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\sulai\\source\\repos\\Portfolio\\Portfolio\\bin\\Debug\\netcoreapp2.1\\Portfolio.dll Build.SectionBuilderPreBuild $(SolutionDir)/Scripts"
+    }
+  }
+}

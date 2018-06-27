@@ -8,9 +8,8 @@ function Test1() {
         if (err) {
             return console.error(err);
         }
-        var json = JSON.parse(data.toString());
         var builder = all.SectionBuilder.fromJS(JSON.parse(data.toString()));
-        assert(builder["Title"] == "test");
+        assert(builder.title == "test");
     });
 }
 exports.Test1 = Test1;
