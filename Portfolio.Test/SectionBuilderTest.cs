@@ -80,7 +80,7 @@ namespace Portfolio.Test
             }
 
             string tsPath = Resource.instance["ts"];
-            await SectionBuilder.CreateTypescriptClass(tsPath + @"\" + TsName, await SectionBuilder.CreateSchema());
+            await SectionBuilder.CreateTypescriptClass(await SectionBuilder.CreateSchema(), tsPath + @"\" + TsName);
             Assert.True(SectionBuilder.Validate(json, schema));
         }
 

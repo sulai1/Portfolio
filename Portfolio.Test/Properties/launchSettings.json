@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Portfolio.Test": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "MSBUILDDISABLENODEREUSE": "1"
+      }
+    }
+  }
+}

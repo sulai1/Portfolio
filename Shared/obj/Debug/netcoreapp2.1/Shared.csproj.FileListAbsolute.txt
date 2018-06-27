@@ -4,6 +4,8 @@ C:\Users\sulai\source\repos\Portfolio\Shared\bin\Debug\netcoreapp2.1\Shared.runt
 C:\Users\sulai\source\repos\Portfolio\Shared\bin\Debug\netcoreapp2.1\Shared.dll
 C:\Users\sulai\source\repos\Portfolio\Shared\bin\Debug\netcoreapp2.1\Shared.pdb
 C:\Users\sulai\source\repos\Portfolio\Shared\obj\Debug\netcoreapp2.1\Shared.csprojAssemblyReference.cache
+C:\Users\sulai\source\repos\Portfolio\Shared\obj\Debug\netcoreapp2.1\Shared.Properties.Resources.resources
+C:\Users\sulai\source\repos\Portfolio\Shared\obj\Debug\netcoreapp2.1\Shared.res.Resource.resources
 C:\Users\sulai\source\repos\Portfolio\Shared\obj\Debug\netcoreapp2.1\Shared.csproj.GenerateResource.cache
 C:\Users\sulai\source\repos\Portfolio\Shared\obj\Debug\netcoreapp2.1\Shared.csproj.CoreCompileInputs.cache
 C:\Users\sulai\source\repos\Portfolio\Shared\obj\Debug\netcoreapp2.1\Shared.RazorAssemblyInfo.cache
@@ -13,5 +15,3 @@ C:\Users\sulai\source\repos\Portfolio\Shared\obj\Debug\netcoreapp2.1\Shared.Asse
 C:\Users\sulai\source\repos\Portfolio\Shared\obj\Debug\netcoreapp2.1\Shared.RazorTargetAssemblyInfo.cache
 C:\Users\sulai\source\repos\Portfolio\Shared\obj\Debug\netcoreapp2.1\Shared.dll
 C:\Users\sulai\source\repos\Portfolio\Shared\obj\Debug\netcoreapp2.1\Shared.pdb
-C:\Users\sulai\source\repos\Portfolio\Shared\obj\Debug\netcoreapp2.1\Shared.res.Resource.resources
-C:\Users\sulai\source\repos\Portfolio\Shared\obj\Debug\netcoreapp2.1\Shared.Properties.Resources.resources

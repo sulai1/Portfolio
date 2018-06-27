@@ -8,7 +8,11 @@
     "inputFile": "wwwroot/js/site.js"
   },
   {
-    "outputFile": "wwwroot/js/content.js",
-    "inputFile": "wwwroot/js/content.jsx"
+    "outputFile": "wwwroot/js/pagebuilder.js",
+    "inputFile": "wwwroot/js/pagebuilder.jsx"
+  },
+  {
+    "outputFile": "wwwroot/js/sectionbuilder.es5.js",
+    "inputFile": "wwwroot/js/sectionbuilder.js"
   }
 ]

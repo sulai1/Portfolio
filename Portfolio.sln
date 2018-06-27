@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio", "Portfolio\Portfolio.csproj", "{BF41B50E-5D68-4620-BAB4-ADDC52E03F5C}"
-	ProjectSection(ProjectDependencies) = postProject
-		{5A7C8505-D007-4CFC-96F5-321583E0DE8C} = {5A7C8505-D007-4CFC-96F5-321583E0DE8C}
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio.Test", "Portfolio.Test\Portfolio.Test.csproj", "{680CE736-4DC3-406D-A78D-DCCABC4A74F4}"
 EndProject
@@ -16,7 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UML", "UML", "{E635AA6C-EA9
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Portfolio.Test.TS", "Portfolio.Test.TS\Portfolio.Test.TS.njsproj", "{5371ADA0-3129-49AE-84DC-069EB4C6560C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{5A7C8505-D007-4CFC-96F5-321583E0DE8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildTools", "BuildTools\BuildTools.csproj", "{A296DAA8-FB0F-4D19-B1F6-570B06DE26F6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BF41B50E-5D68-4620-BAB4-ADDC52E03F5C} = {BF41B50E-5D68-4620-BAB4-ADDC52E03F5C}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,10 +36,10 @@ Global
 		{5371ADA0-3129-49AE-84DC-069EB4C6560C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5371ADA0-3129-49AE-84DC-069EB4C6560C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5371ADA0-3129-49AE-84DC-069EB4C6560C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A7C8505-D007-4CFC-96F5-321583E0DE8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A7C8505-D007-4CFC-96F5-321583E0DE8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A7C8505-D007-4CFC-96F5-321583E0DE8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A7C8505-D007-4CFC-96F5-321583E0DE8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A296DAA8-FB0F-4D19-B1F6-570B06DE26F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A296DAA8-FB0F-4D19-B1F6-570B06DE26F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A296DAA8-FB0F-4D19-B1F6-570B06DE26F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A296DAA8-FB0F-4D19-B1F6-570B06DE26F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

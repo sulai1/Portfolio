@@ -1,22 +1,22 @@
-﻿@model Portfolio.Areas.Articles.Data.SectionBuilder
-@using Newtonsoft.Json
-@using Portfolio.Areas.Articles.Models
+﻿@model Portfolio.Areas.Articles.Data.SectionBuilder;
+@using Newtonsoft.Json;
 @{
+
     ViewData["Title"] = "SectionBuilder";
-    var json = JsonConvert.SerializeObject(Model);
+    var json = JsonConvert.SerializeObject(Model).ToString();
+
 }
-<script type="text/javascript">
-
+<script type="text/javascript" src="~/js/pagebuilder.js">
 </script>
+<body onload="draw(@json)">
+    <h2>@Model.Title</h2>
+    <form asp-action="Index">
+        <input type="hidden" asp-for="Content" />
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <input type="submit" value="Save" class="btn btn-default" />
+    </form>
+    <div id="container">
 
-<h2>@Model.Title</h2>
-<form asp-action="Index">
-    <input type="hidden" asp-for="Content" />
-    <label asp-for="Title" class="control-label"></label>
-    <input asp-for="Title" class="form-control" />
-    <input type="submit" value="Save" class="btn btn-default" />
-</form>
-
-@{await Html.RenderPartialAsync("Content", Model);}
-
-
+    </div>
+</body>

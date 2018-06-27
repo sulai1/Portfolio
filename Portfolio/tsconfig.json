@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
+    "module": "es6",
     "noImplicitAny": false,
     "noEmitOnError": true,
     "removeComments": false,
     "sourceMap": true,
-    "target": "es5",
-     "outDir": "wwwroot/ts"
+    "target": "es6",
+    "outDir": "wwwroot/js",
+    "jsx": "preserve"
   },
   "exclude": [
     "node_modules",
     "wwwroot"
   ]
+
 }

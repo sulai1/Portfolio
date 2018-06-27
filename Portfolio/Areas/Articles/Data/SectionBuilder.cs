@@ -73,19 +73,19 @@ namespace Portfolio.Areas.Articles.Data
         public static string CreateTypescriptClass(JsonSchema4 schema)
         {
             var settings = new TypeScriptGeneratorSettings { TypeStyle = TypeScriptTypeStyle.Class, TypeScriptVersion = 2.8m };
-            return new TypeScriptGenerator(schema,settings).GenerateFile();
+            return new TypeScriptGenerator(schema, settings).GenerateFile();
         }
 
-        public static async Task CreateTypescriptClass(TextWriter writer, JsonSchema4 schema)
+        public static async Task CreateTypescriptClass(JsonSchema4 schema, TextWriter writer)
         {
             await writer.WriteAsync(CreateTypescriptClass(schema));
         }
 
-        public static async Task CreateTypescriptClass(string TsPath, JsonSchema4 schema)
+        public static async Task CreateTypescriptClass(JsonSchema4 schema, string TsPath)
         {
             using (var writer = new StreamWriter(TsPath))
             {
-                await CreateTypescriptClass(writer, schema);
+                await CreateTypescriptClass(schema, writer);
             }
         }
         #endregion Create Typescript class

@@ -21,7 +21,7 @@ class Tile {
     }
 
     isLast() {
-        return this.xStart == this.context.numXTiles - 1 && this.yStart == this.context.numYTiles - 1;
+        return this.xStart === this.context.numXTiles - 1 && this.yStart === this.context.numYTiles - 1;
     }
     drawBorder() {
         let { dispX, dispY } = this.dispPos(this.context);
@@ -42,7 +42,7 @@ class Tile {
         var dispX = u * this.context.width;
         var dispY = v * this.context.height;
 
-        return { dispX, dispY }
+        return { dispX, dispY };
     }
 
     draw() {
@@ -64,13 +64,13 @@ class Tile {
     }
 
     isSelectable() {
-        if (this.context.last.x == this.x) {
-            if (this.context.last.y - 1 == this.y || this.context.last.y + 1 == this.y) {
+        if (this.context.last.x === this.x) {
+            if (this.context.last.y - 1 === this.y || this.context.last.y + 1 === this.y) {
                 return true;
             }
         }
-        else if (this.context.last.y == this.y) {
-            if (this.context.last.x - 1 == this.x || this.context.last.x + 1 == this.x) {
+        else if (this.context.last.y === this.y) {
+            if (this.context.last.x - 1 === this.x || this.context.last.x + 1 === this.x) {
                 return true;
             }
         }
@@ -159,7 +159,7 @@ class Context {
             for (var x = 0; x < this.numXTiles; x++) {
                 for (var y = 0; y < this.numYTiles; y++) {
                     var tile = this.tiles[x][y];
-                    if (tile.xStart != x || tile.yStart != y)
+                    if (tile.xStart !== x || tile.yStart !== y)
                         finished = false;
                 }
             }
