@@ -1,12 +1,22 @@
 ﻿
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
-    <script src="~/js/PictureShift.js"></script>
 </head>
 <body>
     <h2>Picture Shift</h2>
-
-    <div id="sketch-holder" class="border" style="min-width:600px;min-height:400px">
+    <p>Someone was messing with that Picture! Can you solve this puzzle?</p>
+    <h4>Rules</h4>
+    The image is seperated into tiles. The gray tile belongs to the bottom right corner.
+    You can move it to one of its adjacent tiles clicking on the highlighed tiles around it.
+    <hr />
+    Click on the image to start! Or click button to restart.
+    <button class="btn-default" onclick="reset()">Reset</button>
+    <div id="sketch" class="border" style="min-width:600px;min-height:400px" onclick="setPos()">
         <!-- Our sketch will go here! -->
+        <script type="text/javascript" src="~/js/picshift.js"></script>
     </div>
+
+    <h4>Settings</h4>
+    <label for="difficulty">Difficulty</label>
+    <input type="range" min="1" max="100" name="difficulty" oninput="setDifficulty(value)" />
 </body>

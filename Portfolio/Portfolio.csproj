@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web" DefaultTargets="Build">
+﻿
+<Project Sdk="Microsoft.NET.Sdk.Web" DefaultTargets="Build">
 
   <PropertyGroup>
 
@@ -8,13 +9,11 @@
   </PropertyGroup>
 
   <!-- Custom Task that generates files prior to all other targets so they get compiled too-->
-  
-  <UsingTask TaskName="Build.PreBuildTask" AssemblyFile="C:\Users\sulai\source\repos\Portfolio\BuildTools\bin\Debug\netcoreapp2.1\BuildTools.dll" />
+  <!--<UsingTask TaskName="Build.PreBuildTask" AssemblyFile="C:\Users\sulai\source\repos\Portfolio\BuildTools\bin\Debug\netcoreapp2.1\BuildTools.dll" />
   <Target Name="Generate" AfterTargets="Build">
-    <Message Text="Generate :------------------ C:\Users\sulai\source\repos\Portfolio\BuildTools\bin\Debug\netcoreapp2.1\BuildTools.dll" Importance="high" />
+    <Message Text="Generate : C:\Users\sulai\source\repos\Portfolio\BuildTools\bin\Debug\netcoreapp2.1\BuildTools.dll" Importance="high" />
     <Build.PreBuildTask />
-  </Target>
-
+  </Target>-->
 
 
   <ItemGroup>
@@ -27,11 +26,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Scripts\sectionbuilder.ts" />
+    <Content Include="Scripts\js\pagebuilder.es5.js" />
+    <Content Include="Scripts\js\pagebuilder.es5.min.js" />
+    <Content Include="Scripts\js\pagebuilder.js" />
+    <Content Include="Scripts\js\pagebuilder.js.map" />
+    <Content Include="Scripts\js\sectionbuilder.es5.js" />
+    <Content Include="Scripts\js\sectionbuilder.es5.min.js" />
+    <Content Include="Scripts\js\sectionbuilder.js" />
+    <Content Include="Scripts\js\sectionbuilder.js.map" />
+    <Content Include="Scripts\ts\sectionbuilder.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="2.8.391" />
+    <PackageReference Include="BuildBundlerMinifier-Typescript" Version="2.1.258" />
     <PackageReference Include="BuildWebCompiler" Version="1.11.375" />
+    <PackageReference Include="BundlerMinifier.Core" Version="2.8.391" />
     <PackageReference Include="jquery.TypeScript.DefinitelyTyped" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.Build.Framework" Version="15.7.179" />
@@ -158,6 +168,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\js\PictureShift.js" />
     <None Include="wwwroot\lib\datatables\js\dataTables.bootstrap.js" />
     <None Include="wwwroot\lib\datatables\js\dataTables.bootstrap.min.js" />
     <None Include="wwwroot\lib\datatables\js\dataTables.bootstrap4.js" />
@@ -173,7 +184,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\pagebuilder.tsx" />
+    <TypeScriptCompile Include="Scripts\ts\pagebuilder.ts" />
   </ItemGroup>
 
   <ItemGroup>

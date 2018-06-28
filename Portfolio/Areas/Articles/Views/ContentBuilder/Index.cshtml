@@ -6,7 +6,14 @@
     var json = JsonConvert.SerializeObject(Model).ToString();
 
 }
-<script type="text/javascript" src="~/js/pagebuilder.js">
+<script type="module" src="~/js/sectionbuilder.js">
+</script>
+<script type="text/javascript">
+    function draw(json) {
+        var SectionBuilder = require("./sectionbuilder");
+        let js = SectionBuilder.fromJs(JSON.parse(json));
+       console.log(js);
+    }
 </script>
 <body onload="draw(@json)">
     <h2>@Model.Title</h2>

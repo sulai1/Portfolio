@@ -1,1 +1,135 @@
-NJsonSchema.JsonSchema4
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "SectionBuilder",
+  "type": "object",
+  "properties": {
+    "Title": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "SubSections": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/SubSection"
+      }
+    },
+    "Content": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/definitions/IContent"
+      }
+    }
+  },
+  "definitions": {
+    "SubSection": {
+      "type": "object",
+      "properties": {
+        "Title": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    },
+    "IContent": {
+      "type": "object",
+      "discriminator": {
+        "propertyName": "discriminator",
+        "mapping": {
+          "TextContent": {
+            "$ref": "#/definitions/TextContent"
+          },
+          "CodeContent": {
+            "$ref": "#/definitions/CodeContent"
+          },
+          "ExampleContent": {
+            "$ref": "#/definitions/ExampleContent"
+          },
+          "ImageContent": {
+            "$ref": "#/definitions/ImageContent"
+          }
+        }
+      },
+      "x-abstract": true,
+      "required": [
+        "discriminator"
+      ],
+      "properties": {
+        "discriminator": {
+          "type": "string"
+        }
+      }
+    },
+    "TextContent": {
+      "type": "object",
+      "properties": {
+        "Text": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/IContent"
+        }
+      ]
+    },
+    "CodeContent": {
+      "type": "object",
+      "properties": {
+        "Type": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/TextContent"
+        }
+      ]
+    },
+    "ExampleContent": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/CodeContent"
+        }
+      ]
+    },
+    "ImageContent": {
+      "type": "object",
+      "properties": {
+        "Path": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "Alt": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/IContent"
+        }
+      ]
+    }
+  }
+}

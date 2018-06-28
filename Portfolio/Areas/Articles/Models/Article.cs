@@ -9,12 +9,12 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Portfolio.Areas.Articles.Models 
-{
+{ 
     [Serializable]
-    [Area("Articles")]
+    [Area("Articles")]  
     public class Article
     {
-        public int ArticleId { get; set; }
+        public int ArticleId { get; set; }  
         public string Category { get; set; }
         [Required]
         public string Title { get; set; }

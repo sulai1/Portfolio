@@ -82,8 +82,8 @@ class Context {
         this.canvas = null;
         this.changed = false;
         this.img = img;
-        this.width = 0;
-        this.height = 0;
+        this.width = 600;
+        this.height = 400;
         this.numXTiles = numXTiles;
         this.numYTiles = numYTiles;
         this.tiles = Array.from(Array(numXTiles), () => new Array(numYTiles));
@@ -99,13 +99,11 @@ class Context {
         //calculate the width and height
         var el = $('#sketch-holder');
         this.height = el.innerHeight();
-        var r = this.height / this.img.height;
-        this.width = this.img.width * r;
+        this.width = this.height;
 
         //create canvas and set its parent in the html document
         this.canvas = createCanvas(this.width, this.height);
-        this.canvas.parent('sketch-holder');
-        resizeCanvas(this.width * 2, this.height * 2);
+        new p5(setup, el);
     }
 
     initTiles() {
@@ -152,7 +150,7 @@ class Context {
 
     draw() {
         if (this.changed) {
-            vars.canvas.clear();
+            clear();
             this.drawTiles();
             this.changed = false;
             var finished = true;
@@ -189,6 +187,26 @@ class Context {
             }
         }
     }
+
+
+    shuffle() {
+        for (var i = 0; i < 10; i++) {
+            var r = Math.random();
+            var x = this.last.x;
+            var y = this.last.y;
+            if (r < 0.25) {
+                x += 1;
+            } else if (r < 0.5) {
+                x -= 1;
+            } else if (r < 0.75) {
+                y += 1;
+            } else {
+                y -= 1;
+            }
+            if (x >= 0 && y >= 0 && x < this.numXTiles && y < this.numYTiles)
+                this.tiles[x][y].switch(this.last);
+        }
+    }
 }
 var vars;
 
@@ -200,8 +218,33 @@ function setup() {
 
     vars.initCanvas();
     vars.initTiles();
+    vars.shuffle();
     vars.drawImage();
     vars.drawGrid();
+}
+
+function setTileCount(tileCount) {
+    vars.changed = true;
+    vars.numXTiles = tileCount;
+    vars.numYTiles = tileCount;
+    vars.initTiles();
+    vars.shuffle();
+    vars.draw();
+}
+
+function setDifficulty(difficulty) {
+    vars.changed = true;
+    vars.difficulty = difficulty;
+    vars.initTiles();
+    vars.shuffle();
+    vars.draw();
+}
+
+function restart() {
+    vars.changed = true;
+    vars.initTiles();
+    vars.shuffle();
+    vars.draw();
 }
 
 
@@ -209,26 +252,9 @@ function draw() {
     vars.draw();
 }
 
-function mousePressed() {
+function setPos() {
     vars.changed = true;
     var tile = vars.getTile(mouseX, mouseY);
     if (tile.isSelectable(vars))
         tile.switch(vars.last);
-}
-
-function shuffle() {
-    var r = Math.random();
-    var x = vars.last.x;
-    var y = vars.last.y;
-    if (r < 0.25) {
-        x += 1;
-    } else if (r < 0.5) {
-        x -= 1;
-    } else if (r < 0.75) {
-        y += 1;
-    } else {
-        y -= 1;
-    }
-    if (x >= 0 && y >= 0 && x < vars.numXTiles && y < vars.numYTiles)
-        vars.tiles[x][y].switch(last);
 }

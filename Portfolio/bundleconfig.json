@@ -4,5 +4,12 @@
     "inputFiles": [
       "wwwroot/js/site.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/bundle.js",
+    "inputFiles": [
+      "Scripts/js/pagebuilder.js",
+      "Scripts/js/sectionbuilder.js"
+    ]
   }
 ]

@@ -1,18 +1,3 @@
 ﻿[
-  {
-    "outputFile": "wwwroot/css/style.css",
-    "inputFile": "wwwroot/css/style.scss"
-  },
-  {
-    "outputFile": "wwwroot/js/site.es5.js",
-    "inputFile": "wwwroot/js/site.js"
-  },
-  {
-    "outputFile": "wwwroot/js/pagebuilder.js",
-    "inputFile": "wwwroot/js/pagebuilder.jsx"
-  },
-  {
-    "outputFile": "wwwroot/js/sectionbuilder.es5.js",
-    "inputFile": "wwwroot/js/sectionbuilder.js"
-  }
+ 
 ]

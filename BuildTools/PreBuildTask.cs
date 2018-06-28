@@ -12,18 +12,19 @@ namespace Build
     public class PreBuildTask : Task
     {
 
+        readonly string path = "../../../../Portfolio";
         override public bool Execute()
         {
             var schema = SectionBuilder.CreateSchema().Result;
-            var x = SectionBuilder.CreateTypescriptClass(schema);
+            var tsClass = SectionBuilder.CreateTypescriptClass(schema);
 
-            using (var writer = new StreamWriter("../Scripts/sectionbuilder.ts"))
+            using (var writer = new StreamWriter(path + "/Scripts/sectionbuilder.ts"))
             {
-                writer.Write(schema);
+                writer.Write(tsClass);
             }
-            using (var writer = new StreamWriter("../wwwroot/json/sectionbuilder.schema.json"))
+            using (var writer = new StreamWriter(path + "/wwwroot/json/sectionbuilder.schema.json"))
             {
-                writer.Write(schema);
+                writer.Write(schema.ToJson());
             }
             return true;
         }

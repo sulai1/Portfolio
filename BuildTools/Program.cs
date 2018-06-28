@@ -10,12 +10,7 @@ namespace BuildTools
     {
         static void Main(string[] args)
         {
-            if (args.Length < 2)
-            {
-                Console.WriteLine("Missing Arguments! Required AssemblyPath, class to load and OutputPath");
-                return;
-            }
-            Console.WriteLine($"Searching assembly for PreBuildTasks : {args[0]}");
+            new Build.PreBuildTask().Execute();
         }
     }
 }

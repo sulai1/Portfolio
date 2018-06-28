@@ -3,10 +3,12 @@
     "module": "es6",
     "noImplicitAny": false,
     "noEmitOnError": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "removeComments": false,
     "sourceMap": true,
-    "target": "es6",
-    "outDir": "wwwroot/js",
+    "target": "es5",
+    "outDir": "Scripts/js",
     "jsx": "preserve"
   },
   "exclude": [
