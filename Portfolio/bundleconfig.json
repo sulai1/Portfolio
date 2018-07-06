@@ -5,10 +5,16 @@
       "wwwroot/js/site.js"
     ]
   },
+  //{
+  //  "outputFileName": "Scripts/js/bundle.js",
+  //  "inputFiles": [
+  //    "Scripts/js/sectionbuilder.js",
+  //    "Scripts/js/pagebuilder.js"
+  //  ]
+  //},
   {
-    "outputFileName": "wwwroot/js/bundle.js",
+    "outputFileName": "wwwroot/js/sectionbuilder.js",
     "inputFiles": [
-      "Scripts/js/pagebuilder.js",
       "Scripts/js/sectionbuilder.js"
     ]
   }

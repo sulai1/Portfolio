@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "module": "es6",
+    "module": "amd",
     "noImplicitAny": false,
     "noEmitOnError": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "removeComments": false,
     "sourceMap": true,
-    "target": "es5",
+    "target": "es3",
     "outDir": "Scripts/js",
     "jsx": "preserve"
   },

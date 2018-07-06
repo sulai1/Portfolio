@@ -18,7 +18,7 @@ namespace Build
             var schema = SectionBuilder.CreateSchema().Result;
             var tsClass = SectionBuilder.CreateTypescriptClass(schema);
 
-            using (var writer = new StreamWriter(path + "/Scripts/sectionbuilder.ts"))
+            using (var writer = new StreamWriter(path + "/Scripts/ts/sectionbuilder.ts"))
             {
                 writer.Write(tsClass);
             }

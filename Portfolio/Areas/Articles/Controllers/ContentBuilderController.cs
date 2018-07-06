@@ -13,7 +13,14 @@ namespace Portfolio.Areas.Articles
     public class ContentBuilderController : Controller
     {
 
-        SectionBuilder builder = new SectionBuilder();
+        SectionBuilder builder = new SectionBuilder()
+        {
+            Title = "test",
+            Content = new List<IContent>() {
+                new TextContent() { Text="text content 1"},
+                new TextContent() { Text="text content 2"}
+            }
+        };
         public IActionResult Index()
         {
             return View(builder);

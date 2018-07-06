@@ -7,7 +7,6 @@ using Portfolio.Areas.Articles.Models;
 using System.IO;
 using NJsonSchema;
 using NJsonSchema.Generation;
-using Shared.res;
 
 namespace Portfolio.Test
 {
@@ -16,6 +15,7 @@ namespace Portfolio.Test
         private const string SchemaName = "schema.json";
         private const string JsonName = "object.json";
         private const string TsName = "object.ts";
+        private const string ResDir = @"..\..\..\res";
         private readonly ITestOutputHelper output;
         private readonly SectionBuilder builder;
 
@@ -69,7 +69,7 @@ namespace Portfolio.Test
             string json = builder.Serialize();
 
             // write files to disk for later examination
-            string jsonPath = Resource.instance["json"];
+            string jsonPath = ResDir;
             using (var writer = new StreamWriter(jsonPath + @"\" + SchemaName))
             {
                 writer.Write(schemaString);
@@ -79,7 +79,7 @@ namespace Portfolio.Test
                 writer.Write(json);
             }
 
-            string tsPath = Resource.instance["ts"];
+            string tsPath = ResDir;
             await SectionBuilder.CreateTypescriptClass(await SectionBuilder.CreateSchema(), tsPath + @"\" + TsName);
             Assert.True(SectionBuilder.Validate(json, schema));
         }

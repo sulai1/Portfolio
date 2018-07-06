@@ -26,14 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Scripts\js\pagebuilder.es5.js" />
-    <Content Include="Scripts\js\pagebuilder.es5.min.js" />
-    <Content Include="Scripts\js\pagebuilder.js" />
-    <Content Include="Scripts\js\pagebuilder.js.map" />
-    <Content Include="Scripts\js\sectionbuilder.es5.js" />
-    <Content Include="Scripts\js\sectionbuilder.es5.min.js" />
-    <Content Include="Scripts\js\sectionbuilder.js" />
-    <Content Include="Scripts\js\sectionbuilder.js.map" />
     <Content Include="Scripts\ts\sectionbuilder.ts" />
   </ItemGroup>
 
@@ -168,7 +160,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\js\PictureShift.js" />
     <None Include="wwwroot\lib\datatables\js\dataTables.bootstrap.js" />
     <None Include="wwwroot\lib\datatables\js\dataTables.bootstrap.min.js" />
     <None Include="wwwroot\lib\datatables\js\dataTables.bootstrap4.js" />
@@ -181,6 +172,7 @@
     <None Include="wwwroot\lib\datatables\js\dataTables.semanticui.min.js" />
     <None Include="wwwroot\lib\datatables\js\jquery.dataTables.js" />
     <None Include="wwwroot\lib\datatables\js\jquery.dataTables.min.js" />
+    <None Include="wwwroot\lib\require.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -188,6 +180,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Scripts\js\" />
     <Folder Include="wwwroot\json\" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,19 @@
+{
+  "Title": "test",
+  "SubSections": [
+    {
+      "Title": "test.sub.0"
+    }
+  ],
+  "Content": [
+    {
+      "Text": "text.content",
+      "discriminator": "TextContent"
+    },
+    {
+      "Path": "test.image.jpg",
+      "Alt": null,
+      "discriminator": "ImageContent"
+    }
+  ]
+}

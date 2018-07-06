@@ -73,7 +73,10 @@ namespace Portfolio.Areas.Articles.Data
         public static string CreateTypescriptClass(JsonSchema4 schema)
         {
             var settings = new TypeScriptGeneratorSettings { TypeStyle = TypeScriptTypeStyle.Class, TypeScriptVersion = 2.8m };
-            return new TypeScriptGenerator(schema, settings).GenerateFile();
+            string ts = new TypeScriptGenerator(schema, settings).GenerateFile();
+            //disable warnings because the generator generates code that is not compatible with the version of eslint
+            string ignore = "/*eslint eqeqeq: [\"error\", \"smart\"]*/\n";
+            return ignore + ts;
         }
 
         public static async Task CreateTypescriptClass(JsonSchema4 schema, TextWriter writer)

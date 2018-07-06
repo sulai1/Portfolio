@@ -6,16 +6,7 @@
     var json = JsonConvert.SerializeObject(Model).ToString();
 
 }
-<script type="module" src="~/js/sectionbuilder.js">
-</script>
-<script type="text/javascript">
-    function draw(json) {
-        var SectionBuilder = require("./sectionbuilder");
-        let js = SectionBuilder.fromJs(JSON.parse(json));
-       console.log(js);
-    }
-</script>
-<body onload="draw(@json)">
+<body>
     <h2>@Model.Title</h2>
     <form asp-action="Index">
         <input type="hidden" asp-for="Content" />
@@ -24,6 +15,18 @@
         <input type="submit" value="Save" class="btn btn-default" />
     </form>
     <div id="container">
-
+        <button class="btn" id="draw" onclick="draw(@json)">
+            click
+        </button>
+        <script data-main="/js/config" src="~/lib/require.js"></script>
+        <script>
+            var draw;
+            require(['config', 'sectionbuilder'], function (config, sb) {
+                    draw = function (json) {
+                        var builder = sb.SectionBuilder.fromJS(json);
+                        alert('succeed :' + json);
+                    }
+            })
+        </script>
     </div>
 </body>
