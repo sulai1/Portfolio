@@ -18,7 +18,10 @@ namespace Portfolio.Areas.Articles
             Title = "test",
             Content = new List<IContent>() {
                 new TextContent() { Text="text content 1"},
-                new TextContent() { Text="text content 2"}
+                new TextContent() { Text="text content 2"},
+                new CodeContent() { Text="<p>code content</p>", Type="html"},
+                new ExampleContent(){ Text="<p>Example content</p>", Type="html"},
+                new ImageContent(){ Path="file://D:/Pictures/Texturen/bee.jpg", Alt="image"}
             }
         };
         public IActionResult Index()

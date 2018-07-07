@@ -4,6 +4,7 @@ requirejs.config({
     baseUrl: '/js',
     paths: {
         pagebuilder: 'pagebuilder',
-        sectionbuilder: 'sectionbuilder'
+        sectionbuilder: 'sectionbuilder',
+        highlight: '../lib/highlight/highlight.pack'
     }
 });

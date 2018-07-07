@@ -17,5 +17,11 @@
     "inputFiles": [
       "Scripts/js/sectionbuilder.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/pagebuilder.js",
+    "inputFiles": [
+      "Scripts/js/pagebuilder.js"
+    ]
   }
 ]

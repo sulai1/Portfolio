@@ -14,19 +14,35 @@
         <input asp-for="Title" class="form-control" />
         <input type="submit" value="Save" class="btn btn-default" />
     </form>
-    <div id="container">
-        <button class="btn" id="draw" onclick="draw(@json)">
-            click
-        </button>
+    <button class="btn" id="draw" onclick="init(@json);">
+        init
+    </button>
+    <button class="btn" id="draw" onclick="draw();">
+        redraw
+    </button>
+    <div class="breadcrumb" id="container">
         <script data-main="/js/config" src="~/lib/require.js"></script>
         <script>
+            var builder;
+            var init;
             var draw;
-            require(['config', 'sectionbuilder'], function (config, sb) {
-                    draw = function (json) {
-                        var builder = sb.SectionBuilder.fromJS(json);
-                        alert('succeed :' + json);
-                    }
+            var create;
+            require(['config', 'pagebuilder'], function (config, pb) {
+                init = pb.init;
+                draw = function () {
+                    pb.draw();
+                    // todo make async
+                    $('pre, code').each(function (i, block) {
+                        hljs.highlightBlock(block);
+                    });
+                }
+                create = pb.create;
             })
         </script>
+    </div>
+    <div class="btn-group">
+        <button class="btn-primary" onclick="create('text')">text</button>
+        <button class="btn-primary" onclick="create('code')">text</button>
+        <button class="btn-primary" onclick="create('sample')">text</button>
     </div>
 </body>
