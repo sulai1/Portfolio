@@ -5,6 +5,7 @@ var textContentTemplate: string;
 var codeContentTemplate: string;
 var sampleContentTemplate: string;
 var imgContentTemplate: string;
+var controlTemplate: string;
 
 var builder: SectionBuilder;
 
@@ -39,7 +40,11 @@ export const create = function (type: string) {
             break;
     }
 }
-
+/**
+ * Create a new Sectionbuilder from the json string.
+ * Load all of the content and control templates from the document
+ * @param json The json string that is used to create the Sectionbuilder
+ */
 export const init = function (json: string) {
     builder = SectionBuilder.fromJS(json);
     let tmp1 = new TextContent();
@@ -50,12 +55,17 @@ export const init = function (json: string) {
     sampleContentTemplate = $("." + (<any>tmp3).constructor.name)[0].innerHTML;
     let tmp4 = new ImageContent();
     imgContentTemplate = $("." + (<any>tmp4).constructor.name)[0].innerHTML;
+    controlTemplate = $(".content-control")[0].innerHTML;
 }
 
+/**
+ * Swap the elements position with its upper neighbour
+ * @param el the element to swap
+ */
 export function up(el: JQuery<HTMLElement>) {
-    var index = parseInt(el.attr("id").match(/\d*$/)[0])
+    var index = indexOf(el)
     if (index > 0 && index < builder.content.length) {
-        
+
         let a = $("#Content" + index);
         let b = $("#Content" + (index - 1));
         a.after(b);
@@ -66,9 +76,14 @@ export function up(el: JQuery<HTMLElement>) {
         builder.content[index - 1] = contentTmp;
     }
 }
+
+/**
+ * Swap the elements position with its bottom neighbour
+ * @param el the element to swap
+ */
 export function down(el: JQuery<HTMLElement>) {
-    var index = parseInt(el.attr("id").match(/\d*$/)[0])
-    if (index >= 0 && index < builder.content.length-1) {
+    var index = indexOf(el)
+    if (index >= 0 && index < builder.content.length - 1) {
         let a = $("#Content" + index);
         let b = $("#Content" + (index + 1));
         a.before(b);
@@ -80,6 +95,10 @@ export function down(el: JQuery<HTMLElement>) {
     }
 }
 
+/**
+ * draw all content from the section builder,
+ * creating new Content if not allready displayed or reusing old elements.
+ * */
 export const draw = function () {
     var contents = function (content) {
         var col = $("#col")
@@ -125,38 +144,109 @@ export const draw = function () {
     contents(builder.content);
 }
 
-function initContent(id: number, template: string, col: JQuery<HTMLElement>) {
-    let clone = $(template);
-    clone.attr("id", "Content" + id);
-    clone.find("#up").click(function () {
-        up(clone);
-    });
-    clone.find("#down").click(function () {
-        down(clone);
-    });
-    col.append(clone);
-    return clone;
+function indexOf(el: JQuery<HTMLElement>) {
+    return parseInt(el.attr("id").match(/\d*$/)[0]);
 }
 
-function codeContent(template: JQuery<HTMLElement>, el: CodeContent, id: string) {
-    let code = template.find('code').first();
+/**
+ * Create new content and append it to the content area.
+ * @param id The id is used to find the content in the document
+ * @param template The template is used to create the element
+ * @param area The content area where the new element is added to 
+ */
+function initContent(id: number, template: string, area: JQuery<HTMLElement>) {
+    let content = $(template);
+    let control = $(controlTemplate);
+
+    content.attr("id", "Content" + id);
+
+    // hide edit
+    let edit = content.find(".edit");
+    edit.hide(0);
+    control.find(".edit-btn").click(function () {
+        edit.toggle();
+    });
+
+
+    // swap up and down
+    control.find(".up").click(function () {
+        up(content);
+    });
+    control.find(".down").click(function () {
+        down(content);
+    });
+
+    // add the content
+    content.append(control);
+    area.append(content);
+    return content;
+}
+
+function codeContent(content: JQuery<HTMLElement>, el: CodeContent, id: string) {
+    let code = content.find('code').first();
     code.attr("class", el.type);
     code.html(toDisplayableCode(el.text));
-    return template;
+
+    // bind text and type
+    let text = content.find(".text-edit");
+    text.text(el.text);
+
+    let type = content.find(".type-edit");
+    type.val(el.type);
+
+    let save = content.find(".save-btn");
+    save.click(function () {
+        el.text = text.val().toString();
+        el.type = type.val().toString();
+        draw();
+    });
+    return content;
 }
 
-function textContent(template: JQuery<HTMLElement>, el: TextContent, id: string) {
-    template.find('p').first().text(el.text).text(el.text);
-    return template;
+function textContent(content: JQuery<HTMLElement>, el: TextContent, id: string) {
+    content.find('p').first().text(el.text).text(el.text);
+    // bind edit
+    let edit = content.find(".edit");
+    let save = content.find(".save-btn");
+    edit.text(el.text);
+    save.click(function () {
+        el.text = edit.val().toString();
+        draw();
+    });
+    return content;
 }
-function sampleContent(template: JQuery<HTMLElement>, el: ExampleContent, id: string) {
-    template.find('div').first().html(el.text);
-    return template;
+function sampleContent(content: JQuery<HTMLElement>, el: ExampleContent, id: string) {
+    content.find('.sample').first().html(el.text);
+    // bind edit
+    let edit = content.find(".text-edit");
+    edit.text(el.text);
+    let save = content.find(".save-btn");
+    save.click(function () {
+        el.text = edit.val().toString();
+        draw();
+    });
+    return content;
 }
-function imgContent(template: JQuery<HTMLElement>, el: ImageContent, id: string) {
-    let img = template.find('img').first();
+function imgContent(content: JQuery<HTMLElement>, el: ImageContent, id: string) {
+    let img = content.find('img').first();
     img.attr("src", el.path);
     img.attr("alt", el.alt);
-    return template;
+    // bind edit
+    let alt = content.find(".alt-edit");
+    alt.val(el.alt);
+
+    let src = content.find(".src-edit");
+
+    let save = content.find(".save-btn");
+    save.click(function () {
+        el.alt = alt.val().toString();
+        var f = src.prop('files')[0];
+        el.path = window.URL.createObjectURL(f)
+        img.attr('src', el.path);
+        img.attr('alt', el.alt);
+        draw();
+    });
+
+    return content;
 }
 imgContent

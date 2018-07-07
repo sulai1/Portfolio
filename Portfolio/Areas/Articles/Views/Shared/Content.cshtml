@@ -1,16 +1,23 @@
 ﻿@using Portfolio.Areas.Articles.Models
+
+<template class="content-control">
+    <div class="col-2 d-flex align-items-end">
+        <div class="btn-group">
+            <button class="btn-primary up"><span class="fa fa-angle-up" aria-hidden="true"></span></button>
+            <button class="btn-primary down"><span class="fa fa-angle-down" aria-hidden="true"></span></button>
+            <button class="btn-primary edit-btn"><span class="fa fa-edit" aria-hidden="true"></span></button>
+            <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
+        </div>
+    </div>
+</template>
+
 <template class="@nameof(TextContent)">
     <div class="row">
         <div class="col">
-            <p>
+            <p class="conent">
                 text goes here
             </p>
-        </div>
-        <div class="col-2">
-            <div class="btn-group">
-                <button class="btn-primary" id="up"><span class="fa fa-angle-up" aria-hidden="true"></span></button>
-                <button class="btn-primary" id="down"><span class="fa fa-angle-down" aria-hidden="true"></span></button>
-            </div>
+            <textarea class="form-control edit"></textarea>
         </div>
     </div>
 </template>
@@ -19,11 +26,11 @@
     <div class="row">
         <div class="col">
             <pre class="pre-scrollable"><code></code></pre>
-        </div>
-        <div class="col-2">
-            <div class="btn-group">
-                <button class="btn-primary" id="up"><span class="fa fa-angle-up" aria-hidden="true"></span></button>
-                <button class="btn-primary" id="down"><span class="fa fa-angle-down" aria-hidden="true"></span></button>
+            <div class="edit">
+                <textarea class="form-control text-edit"></textarea>
+                <select class="form-control type-edit">
+                    <option value="html">HTML</option>
+                </select>
             </div>
         </div>
     </div>
@@ -32,13 +39,8 @@
 <template class="@nameof(ExampleContent)" id="sample">
     <div class="row">
         <div class="col">
-            content goes here
-        </div>
-        <div class="col-2">
-            <div class="btn-group">
-                <button class="btn-primary" id="up"><span class="fa fa-angle-up" aria-hidden="true"></span></button>
-                <button class="btn-primary" id="down"><span class="fa fa-angle-down" aria-hidden="true"></span></button>
-            </div>
+            <div class="sample"></div>
+            <textarea class="form-control edit"></textarea>
         </div>
     </div>
 </template>
@@ -49,12 +51,10 @@
             ​<picture>
                 <img src="..." class="img-fluid img-thumbnail" alt="...">
             </picture>
-        </div>
-        <div class="col-2">
-            <div class="btn-group">
-                <button class="btn-primary" id="up"><span class="fa fa-angle-up" aria-hidden="true"></span></button>
-                <button class="btn-primary" id="down"><span class="fa fa-angle-down" aria-hidden="true"></span></button>
-            </div>
+             <div class="edit">
+                 <input class="form-control alt-edit" type="text" />
+                 <input class="form-control src-edit" type="file" accept="image/*"/>
+             </div>
         </div>
     </div>
 </template>

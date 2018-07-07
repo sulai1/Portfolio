@@ -5,6 +5,7 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
     var codeContentTemplate;
     var sampleContentTemplate;
     var imgContentTemplate;
+    var controlTemplate;
     var builder;
     var toDisplayableCode = function (string) {
         string = string.replace(/</g, '&lt;');
@@ -36,6 +37,11 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
                 break;
         }
     };
+    /**
+     * Create a new Sectionbuilder from the json string.
+     * Load all of the content and control templates from the document
+     * @param json The json string that is used to create the Sectionbuilder
+     */
     exports.init = function (json) {
         builder = sectionbuilder_1.SectionBuilder.fromJS(json);
         var tmp1 = new sectionbuilder_1.TextContent();
@@ -46,9 +52,14 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
         sampleContentTemplate = $("." + tmp3.constructor.name)[0].innerHTML;
         var tmp4 = new sectionbuilder_1.ImageContent();
         imgContentTemplate = $("." + tmp4.constructor.name)[0].innerHTML;
+        controlTemplate = $(".content-control")[0].innerHTML;
     };
+    /**
+     * Swap the elements position with its upper neighbour
+     * @param el the element to swap
+     */
     function up(el) {
-        var index = parseInt(el.attr("id").match(/\d*$/)[0]);
+        var index = indexOf(el);
         if (index > 0 && index < builder.content.length) {
             var a = $("#Content" + index);
             var b = $("#Content" + (index - 1));
@@ -61,8 +72,12 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
         }
     }
     exports.up = up;
+    /**
+     * Swap the elements position with its bottom neighbour
+     * @param el the element to swap
+     */
     function down(el) {
-        var index = parseInt(el.attr("id").match(/\d*$/)[0]);
+        var index = indexOf(el);
         if (index >= 0 && index < builder.content.length - 1) {
             var a = $("#Content" + index);
             var b = $("#Content" + (index + 1));
@@ -75,6 +90,10 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
         }
     }
     exports.down = down;
+    /**
+     * draw all content from the section builder,
+     * creating new Content if not allready displayed or reusing old elements.
+     * */
     exports.draw = function () {
         var contents = function (content) {
             var col = $("#col");
@@ -121,37 +140,96 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
         };
         contents(builder.content);
     };
-    function initContent(id, template, col) {
-        var clone = $(template);
-        clone.attr("id", "Content" + id);
-        clone.find("#up").click(function () {
-            up(clone);
-        });
-        clone.find("#down").click(function () {
-            down(clone);
-        });
-        col.append(clone);
-        return clone;
+    function indexOf(el) {
+        return parseInt(el.attr("id").match(/\d*$/)[0]);
     }
-    function codeContent(template, el, id) {
-        var code = template.find('code').first();
+    /**
+     * Create new content and append it to the content area.
+     * @param id The id is used to find the content in the document
+     * @param template The template is used to create the element
+     * @param area The content area where the new element is added to
+     */
+    function initContent(id, template, area) {
+        var content = $(template);
+        var control = $(controlTemplate);
+        content.attr("id", "Content" + id);
+        // hide edit
+        var edit = content.find(".edit");
+        edit.hide(0);
+        control.find(".edit-btn").click(function () {
+            edit.toggle();
+        });
+        // swap up and down
+        control.find(".up").click(function () {
+            up(content);
+        });
+        control.find(".down").click(function () {
+            down(content);
+        });
+        // add the content
+        content.append(control);
+        area.append(content);
+        return content;
+    }
+    function codeContent(content, el, id) {
+        var code = content.find('code').first();
         code.attr("class", el.type);
         code.html(toDisplayableCode(el.text));
-        return template;
+        // bind text and type
+        var text = content.find(".text-edit");
+        text.text(el.text);
+        var type = content.find(".type-edit");
+        type.val(el.type);
+        var save = content.find(".save-btn");
+        save.click(function () {
+            el.text = text.val().toString();
+            el.type = type.val().toString();
+            exports.draw();
+        });
+        return content;
     }
-    function textContent(template, el, id) {
-        template.find('p').first().text(el.text).text(el.text);
-        return template;
+    function textContent(content, el, id) {
+        content.find('p').first().text(el.text).text(el.text);
+        // bind edit
+        var edit = content.find(".edit");
+        var save = content.find(".save-btn");
+        edit.text(el.text);
+        save.click(function () {
+            el.text = edit.val().toString();
+            exports.draw();
+        });
+        return content;
     }
-    function sampleContent(template, el, id) {
-        template.find('div').first().html(el.text);
-        return template;
+    function sampleContent(content, el, id) {
+        content.find('.sample').first().html(el.text);
+        // bind edit
+        var edit = content.find(".text-edit");
+        edit.text(el.text);
+        var save = content.find(".save-btn");
+        save.click(function () {
+            el.text = edit.val().toString();
+            exports.draw();
+        });
+        return content;
     }
-    function imgContent(template, el, id) {
-        var img = template.find('img').first();
+    function imgContent(content, el, id) {
+        var img = content.find('img').first();
         img.attr("src", el.path);
         img.attr("alt", el.alt);
-        return template;
+        // bind edit
+        var alt = content.find(".alt-edit");
+        alt.val(el.alt);
+        var src = content.find(".src-edit");
+        var save = content.find(".save-btn");
+        save.click(function () {
+            el.alt = alt.val().toString();
+            var f = src.prop('files')[0];
+            el.path = window.URL.createObjectURL(f);
+            img.attr('src', el.path);
+            img.attr('alt', el.alt);
+            exports.draw();
+        });
+        return content;
     }
     imgContent;
 });
