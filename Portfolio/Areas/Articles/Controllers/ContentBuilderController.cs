@@ -21,7 +21,7 @@ namespace Portfolio.Areas.Articles
                 new TextContent() { Text="text content 2"},
                 new CodeContent() { Text="<p>code content</p>", Type="html"},
                 new ExampleContent(){ Text="<p>Example content</p>", Type="html"},
-                new ImageContent(){ Path="file://D:/Pictures/Texturen/bee.jpg", Alt="image"}
+                new ImageContent(){ Path="/images/test.jpg", Alt="image"}
             }
         };
         public IActionResult Index()

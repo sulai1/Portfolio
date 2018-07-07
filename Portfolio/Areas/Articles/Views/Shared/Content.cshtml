@@ -1,0 +1,60 @@
+﻿@using Portfolio.Areas.Articles.Models
+<template class="@nameof(TextContent)">
+    <div class="row">
+        <div class="col">
+            <p>
+                text goes here
+            </p>
+        </div>
+        <div class="col-2">
+            <div class="btn-group">
+                <button class="btn-primary" id="up"><span class="fa fa-angle-up" aria-hidden="true"></span></button>
+                <button class="btn-primary" id="down"><span class="fa fa-angle-down" aria-hidden="true"></span></button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template class="@nameof(CodeContent)">
+    <div class="row">
+        <div class="col">
+            <pre class="pre-scrollable"><code></code></pre>
+        </div>
+        <div class="col-2">
+            <div class="btn-group">
+                <button class="btn-primary" id="up"><span class="fa fa-angle-up" aria-hidden="true"></span></button>
+                <button class="btn-primary" id="down"><span class="fa fa-angle-down" aria-hidden="true"></span></button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template class="@nameof(ExampleContent)" id="sample">
+    <div class="row">
+        <div class="col">
+            content goes here
+        </div>
+        <div class="col-2">
+            <div class="btn-group">
+                <button class="btn-primary" id="up"><span class="fa fa-angle-up" aria-hidden="true"></span></button>
+                <button class="btn-primary" id="down"><span class="fa fa-angle-down" aria-hidden="true"></span></button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template class="@nameof(ImageContent)" id="img">
+    <div class="row">
+        <div class="col">
+            ​<picture>
+                <img src="..." class="img-fluid img-thumbnail" alt="...">
+            </picture>
+        </div>
+        <div class="col-2">
+            <div class="btn-group">
+                <button class="btn-primary" id="up"><span class="fa fa-angle-up" aria-hidden="true"></span></button>
+                <button class="btn-primary" id="down"><span class="fa fa-angle-down" aria-hidden="true"></span></button>
+            </div>
+        </div>
+    </div>
+</template>

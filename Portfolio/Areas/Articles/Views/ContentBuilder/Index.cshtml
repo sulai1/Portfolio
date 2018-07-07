@@ -6,6 +6,7 @@
     var json = JsonConvert.SerializeObject(Model).ToString();
 
 }
+@await Html.PartialAsync("Content")
 <body>
     <h2>@Model.Title</h2>
     <form asp-action="Index">
@@ -36,13 +37,17 @@
                         hljs.highlightBlock(block);
                     });
                 }
-                create = pb.create;
+                create = function (type) {
+                    pb.create(type);
+                    pb.draw();
+                }
             })
         </script>
     </div>
-    <div class="btn-group">
-        <button class="btn-primary" onclick="create('text')">text</button>
-        <button class="btn-primary" onclick="create('code')">text</button>
-        <button class="btn-primary" onclick="create('sample')">text</button>
+    <div class="btn-group rounded">
+        <button class="btn-primary " onclick="create('text')"><i class="fa fa-align-left"></i></button>
+        <button class="btn-primary" onclick="create('code')"><i class="fa fa-code"></i></button>
+        <button class="btn-primary" onclick="create('sample')"><i class="fa fa-eye"></i></button>
+        <button class="btn-primary" onclick="create('img')"><i class="fa fa-image"></i></button>
     </div>
 </body>
