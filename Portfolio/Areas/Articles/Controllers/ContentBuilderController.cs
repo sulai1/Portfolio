@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,9 +39,14 @@ namespace Portfolio.Areas.Articles
         }
 
         [HttpPost]
-        public async Task<string> AddImage( string text)
+        public string AddImage()
         {
-            return text;
+            string bodyAsString;
+            using (var streamReader = new StreamReader(Request.Body, Encoding.UTF8))
+            {
+                bodyAsString = streamReader.ReadToEnd();
+            }
+            return bodyAsString;
         }
     }
 }
