@@ -1,4 +1,8 @@
 ﻿import { TextContent, CodeContent, ExampleContent, IContent, SectionBuilder, ImageContent } from './sectionbuilder';
+import { URL } from 'url';
+import { error } from 'util';
+import { win32 } from 'path';
+import { read } from 'fs';
 
 
 var textContentTemplate: string;
@@ -9,13 +13,13 @@ var controlTemplate: string;
 
 var builder: SectionBuilder;
 
-var toDisplayableCode = function (string: string) {
+function toDisplayableCode(string: string): string {
     string = string.replace(/</g, '&lt;');
     string = string.replace(/>/g, '&gt;');
     return string;
 }
 
-export const create = function (type: string) {
+export function create(type: string) {
     switch (type) {
         case 'text':
             let a = new TextContent();
@@ -45,7 +49,7 @@ export const create = function (type: string) {
  * Load all of the content and control templates from the document
  * @param json The json string that is used to create the Sectionbuilder
  */
-export const init = function (json: string) {
+export function init(json: string) {
     builder = SectionBuilder.fromJS(json);
     let tmp1 = new TextContent();
     textContentTemplate = $("." + (<any>tmp1).constructor.name)[0].innerHTML;
@@ -57,6 +61,7 @@ export const init = function (json: string) {
     imgContentTemplate = $("." + (<any>tmp4).constructor.name)[0].innerHTML;
     controlTemplate = $(".content-control")[0].innerHTML;
 }
+
 
 /**
  * Swap the elements position with its upper neighbour
@@ -99,7 +104,7 @@ export function down(el: JQuery<HTMLElement>) {
  * draw all content from the section builder,
  * creating new Content if not allready displayed or reusing old elements.
  * */
-export const draw = function () {
+export function draw() {
     var contents = function (content) {
         var col = $("#col")
         if (col.length == 0)
@@ -144,7 +149,7 @@ export const draw = function () {
     contents(builder.content);
 }
 
-function indexOf(el: JQuery<HTMLElement>) {
+function indexOf(el: JQuery<HTMLElement>): number {
     return parseInt(el.attr("id").match(/\d*$/)[0]);
 }
 
@@ -182,7 +187,7 @@ function initContent(id: number, template: string, area: JQuery<HTMLElement>) {
     return content;
 }
 
-function codeContent(content: JQuery<HTMLElement>, el: CodeContent, id: string) {
+function codeContent(content: JQuery<HTMLElement>, el: CodeContent, id: string): JQuery<HTMLElement> {
     let code = content.find('code').first();
     code.attr("class", el.type);
     code.html(toDisplayableCode(el.text));
@@ -203,31 +208,31 @@ function codeContent(content: JQuery<HTMLElement>, el: CodeContent, id: string) 
     return content;
 }
 
-function textContent(content: JQuery<HTMLElement>, el: TextContent, id: string) {
+function textContent(content: JQuery<HTMLElement>, el: TextContent, id: string): JQuery<HTMLElement> {
     content.find('p').first().text(el.text).text(el.text);
     // bind edit
-    let edit = content.find(".edit");
+    let edit = content.find(".text-edit");
     let save = content.find(".save-btn");
-    edit.text(el.text);
+    edit.val(el.text);
     save.click(function () {
         el.text = edit.val().toString();
         draw();
     });
     return content;
 }
-function sampleContent(content: JQuery<HTMLElement>, el: ExampleContent, id: string) {
+function sampleContent(content: JQuery<HTMLElement>, el: ExampleContent, id: string): JQuery<HTMLElement> {
     content.find('.sample').first().html(el.text);
     // bind edit
-    let edit = content.find(".text-edit");
-    edit.text(el.text);
+    let text = content.find(".text-edit");
+    text.val(el.text);
     let save = content.find(".save-btn");
     save.click(function () {
-        el.text = edit.val().toString();
+        el.text = text.val().toString();
         draw();
     });
     return content;
 }
-function imgContent(content: JQuery<HTMLElement>, el: ImageContent, id: string) {
+function imgContent(content: JQuery<HTMLElement>, el: ImageContent, id: string): JQuery<HTMLElement> {
     let img = content.find('img').first();
     img.attr("src", el.path);
     img.attr("alt", el.alt);
@@ -240,13 +245,36 @@ function imgContent(content: JQuery<HTMLElement>, el: ImageContent, id: string) 
     let save = content.find(".save-btn");
     save.click(function () {
         el.alt = alt.val().toString();
-        var f = src.prop('files')[0];
-        el.path = window.URL.createObjectURL(f)
-        img.attr('src', el.path);
-        img.attr('alt', el.alt);
-        draw();
+        var file = src.prop('files')[0];
+
+        let reader = new FileReader();
+        //$.ajax({
+        //    url: window.location.href + "/AddImage",
+        //    contentType: "text/plain",
+        //    data: "test",
+        //    type: "post",
+        //    dataType: "text",
+        //    success: function (data) {
+        //        alert(data);
+        //    },
+        //    error: function (err) {
+        //        alert(err);
+        //    }
+        //});
+        reader.onload = function (e) {
+
+            let request = new XMLHttpRequest();
+            request.responseType = "text";
+            request.open('POST', window.location.href + "/AddImage");
+            request.onload = function () {
+                alert(request.response);
+            };
+            request.send("test");
+        };
+
+        reader.readAsBinaryString(file);
+
     });
 
     return content;
 }
-imgContent

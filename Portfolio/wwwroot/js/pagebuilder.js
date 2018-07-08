@@ -7,12 +7,12 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
     var imgContentTemplate;
     var controlTemplate;
     var builder;
-    var toDisplayableCode = function (string) {
+    function toDisplayableCode(string) {
         string = string.replace(/</g, '&lt;');
         string = string.replace(/>/g, '&gt;');
         return string;
-    };
-    exports.create = function (type) {
+    }
+    function create(type) {
         switch (type) {
             case 'text':
                 var a = new sectionbuilder_1.TextContent();
@@ -36,13 +36,14 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
                 builder.content.push(d);
                 break;
         }
-    };
+    }
+    exports.create = create;
     /**
      * Create a new Sectionbuilder from the json string.
      * Load all of the content and control templates from the document
      * @param json The json string that is used to create the Sectionbuilder
      */
-    exports.init = function (json) {
+    function init(json) {
         builder = sectionbuilder_1.SectionBuilder.fromJS(json);
         var tmp1 = new sectionbuilder_1.TextContent();
         textContentTemplate = $("." + tmp1.constructor.name)[0].innerHTML;
@@ -53,7 +54,8 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
         var tmp4 = new sectionbuilder_1.ImageContent();
         imgContentTemplate = $("." + tmp4.constructor.name)[0].innerHTML;
         controlTemplate = $(".content-control")[0].innerHTML;
-    };
+    }
+    exports.init = init;
     /**
      * Swap the elements position with its upper neighbour
      * @param el the element to swap
@@ -94,7 +96,7 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
      * draw all content from the section builder,
      * creating new Content if not allready displayed or reusing old elements.
      * */
-    exports.draw = function () {
+    function draw() {
         var contents = function (content) {
             var col = $("#col");
             if (col.length == 0)
@@ -139,7 +141,8 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
             }
         };
         contents(builder.content);
-    };
+    }
+    exports.draw = draw;
     function indexOf(el) {
         return parseInt(el.attr("id").match(/\d*$/)[0]);
     }
@@ -184,31 +187,31 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
         save.click(function () {
             el.text = text.val().toString();
             el.type = type.val().toString();
-            exports.draw();
+            draw();
         });
         return content;
     }
     function textContent(content, el, id) {
         content.find('p').first().text(el.text).text(el.text);
         // bind edit
-        var edit = content.find(".edit");
+        var edit = content.find(".text-edit");
         var save = content.find(".save-btn");
-        edit.text(el.text);
+        edit.val(el.text);
         save.click(function () {
             el.text = edit.val().toString();
-            exports.draw();
+            draw();
         });
         return content;
     }
     function sampleContent(content, el, id) {
         content.find('.sample').first().html(el.text);
         // bind edit
-        var edit = content.find(".text-edit");
-        edit.text(el.text);
+        var text = content.find(".text-edit");
+        text.val(el.text);
         var save = content.find(".save-btn");
         save.click(function () {
-            el.text = edit.val().toString();
-            exports.draw();
+            el.text = text.val().toString();
+            draw();
         });
         return content;
     }
@@ -223,14 +226,33 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
         var save = content.find(".save-btn");
         save.click(function () {
             el.alt = alt.val().toString();
-            var f = src.prop('files')[0];
-            el.path = window.URL.createObjectURL(f);
-            img.attr('src', el.path);
-            img.attr('alt', el.alt);
-            exports.draw();
+            var file = src.prop('files')[0];
+            var reader = new FileReader();
+            //$.ajax({
+            //    url: window.location.href + "/AddImage",
+            //    contentType: "text/plain",
+            //    data: "test",
+            //    type: "post",
+            //    dataType: "text",
+            //    success: function (data) {
+            //        alert(data);
+            //    },
+            //    error: function (err) {
+            //        alert(err);
+            //    }
+            //});
+            reader.onload = function (e) {
+                var request = new XMLHttpRequest();
+                request.responseType = "text";
+                request.open('POST', window.location.href + "/AddImage");
+                request.onload = function () {
+                    alert(request.response);
+                };
+                request.send("test");
+            };
+            reader.readAsBinaryString(file);
         });
         return content;
     }
-    imgContent;
 });
 //# sourceMappingURL=pagebuilder.js.map

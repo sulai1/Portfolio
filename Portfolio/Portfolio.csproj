@@ -180,6 +180,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Articles\Pages\" />
     <Folder Include="Scripts\js\" />
     <Folder Include="wwwroot\json\" />
   </ItemGroup>

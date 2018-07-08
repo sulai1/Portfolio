@@ -9,18 +9,6 @@
 @await Html.PartialAsync("Content")
 <body>
     <h2>@Model.Title</h2>
-    <form asp-action="Index">
-        <input type="hidden" asp-for="Content" />
-        <label asp-for="Title" class="control-label"></label>
-        <input asp-for="Title" class="form-control" />
-        <input type="submit" value="Save" class="btn btn-default" />
-    </form>
-    <button class="btn" id="draw" onclick="init(@json);">
-        init
-    </button>
-    <button class="btn" id="draw" onclick="draw();">
-        redraw
-    </button>
     <div class="breadcrumb" id="container">
         <script data-main="/js/config" src="~/lib/require.js"></script>
         <script>
@@ -45,9 +33,14 @@
         </script>
     </div>
     <div class="btn-group rounded">
-        <button class="btn-primary " onclick="create('text')"><i class="fa fa-align-left"></i></button>
-        <button class="btn-primary" onclick="create('code')"><i class="fa fa-code"></i></button>
-        <button class="btn-primary" onclick="create('sample')"><i class="fa fa-eye"></i></button>
-        <button class="btn-primary" onclick="create('img')"><i class="fa fa-image"></i></button>
+        <button class="btn btn-primary " onclick="create('text')"><i class="fa fa-align-left"></i></button>
+        <button class="btn btn-primary" onclick="create('code')"><i class="fa fa-code"></i></button>
+        <button class="btn btn-primary" onclick="create('sample')"><i class="fa fa-eye"></i></button>
+        <button class="btn btn-primary" onclick="create('img')"><i class="fa fa-image"></i></button>
+    </div>
+    <div class="btn-group rounded">
+        <button class="btn btn-primary" id="init" onclick="init(@json);">init</button>
+        <button class="btn btn-primary" id="draw" onclick="draw();">redraw</button>
+        <button class="btn btn-primary" onclick=""><i class="fa fa-save"></i></button>
     </div>
 </body>

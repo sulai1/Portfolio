@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Portfolio.Areas.Articles.Data;
@@ -34,6 +35,12 @@ namespace Portfolio.Areas.Articles
         public IActionResult Index(string type, [Bind("Title")] SectionBuilder builder)
         {
             return View(builder);
+        }
+
+        [HttpPost]
+        public async Task<string> AddImage( string text)
+        {
+            return text;
         }
     }
 }

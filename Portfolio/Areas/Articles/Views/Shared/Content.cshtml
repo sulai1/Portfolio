@@ -1,23 +1,26 @@
 ﻿@using Portfolio.Areas.Articles.Models
 
 <template class="content-control">
-    <div class="col-2 d-flex align-items-end">
+    <div class="col-3 d-flex align-items-end">
         <div class="btn-group">
-            <button class="btn-primary up"><span class="fa fa-angle-up" aria-hidden="true"></span></button>
-            <button class="btn-primary down"><span class="fa fa-angle-down" aria-hidden="true"></span></button>
-            <button class="btn-primary edit-btn"><span class="fa fa-edit" aria-hidden="true"></span></button>
-            <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-outline-primary up"><span class="fa fa-angle-up" aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-outline-primary down"><span class="fa fa-angle-down" aria-hidden="true"></span></button>
+            <button type="button" class="btn btn-outline-primary edit-btn"><span class="fa fa-edit" aria-hidden="true"></span></button>
         </div>
     </div>
 </template>
 
 <template class="@nameof(TextContent)">
     <div class="row">
-        <div class="col">
+        <div class="col-9">
             <p class="conent">
                 text goes here
             </p>
-            <textarea class="form-control edit"></textarea>
+            <div class="edit">
+                <textarea class="form-control text-edit"></textarea>
+                <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
+            </div>
+            <hr />
         </div>
     </div>
 </template>
@@ -31,7 +34,9 @@
                 <select class="form-control type-edit">
                     <option value="html">HTML</option>
                 </select>
+                <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
             </div>
+            <hr />
         </div>
     </div>
 </template>
@@ -40,7 +45,11 @@
     <div class="row">
         <div class="col">
             <div class="sample"></div>
-            <textarea class="form-control edit"></textarea>
+            <div class="edit">
+                <textarea class="form-control text-edit"></textarea>
+                <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
+            </div>
+            <hr />
         </div>
     </div>
 </template>
@@ -51,10 +60,12 @@
             ​<picture>
                 <img src="..." class="img-fluid img-thumbnail" alt="...">
             </picture>
-             <div class="edit">
-                 <input class="form-control alt-edit" type="text" />
-                 <input class="form-control src-edit" type="file" accept="image/*"/>
-             </div>
+            <div class="edit">
+                <input class="form-control alt-edit" type="text" />
+                <input class="form-control src-edit" type="file" accept="image/*" />
+                <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
+            </div>
+            <hr />
         </div>
     </div>
 </template>
