@@ -182,6 +182,7 @@
   <ItemGroup>
     <Folder Include="Areas\Articles\Pages\" />
     <Folder Include="Scripts\js\" />
+    <Folder Include="wwwroot\images\usrimg\" />
     <Folder Include="wwwroot\json\" />
   </ItemGroup>
 </Project>

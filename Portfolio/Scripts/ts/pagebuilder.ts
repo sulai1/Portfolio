@@ -246,7 +246,12 @@ function imgContent(content: JQuery<HTMLElement>, el: ImageContent, id: string):
     save.click(function () {
         el.alt = alt.val().toString();
         var file = src.prop('files')[0];
+        uploadImage(file,el);
+    });
 
+    return content;
+
+    function uploadImage(file: any, c: ImageContent){
         let reader = new FileReader();
         //$.ajax({
         //    url: window.location.href + "/AddImage",
@@ -262,19 +267,20 @@ function imgContent(content: JQuery<HTMLElement>, el: ImageContent, id: string):
         //    }
         //});
         reader.onload = function (e) {
-
             let request = new XMLHttpRequest();
+            // send response as text
             request.responseType = "text";
+            // send a post to add the image
             request.open('POST', window.location.href + "/AddImage");
+            // display the response when it comes in
             request.onload = function () {
                 alert(request.response);
+                c.path = request.response;
+                draw();
             };
-            request.send("test");
+            //send the request
+            request.send('name:test.png;' + reader.result);
         };
-
-        reader.readAsBinaryString(file);
-
-    });
-
-    return content;
+        reader.readAsDataURL(file);
+    }
 }

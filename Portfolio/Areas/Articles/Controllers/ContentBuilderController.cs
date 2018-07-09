@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Portfolio.Areas.Articles.Data;
 using Portfolio.Areas.Articles.Models;
@@ -26,6 +28,13 @@ namespace Portfolio.Areas.Articles
                 new ImageContent(){ Path="/images/test.jpg", Alt="image"}
             }
         };
+        private readonly IHostingEnvironment _environment;
+
+        public ContentBuilderController(IHostingEnvironment environment)
+        {
+            _environment = environment;
+        }
+
         public IActionResult Index()
         {
             return View(builder);
@@ -33,20 +42,39 @@ namespace Portfolio.Areas.Articles
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Index(string type, [Bind("Title")] SectionBuilder builder)
+        public IActionResult Index([Bind("Title")] SectionBuilder builder)
         {
             return View(builder);
         }
 
         [HttpPost]
-        public string AddImage()
+        public async Task<string> AddImage()
         {
             string bodyAsString;
-            using (var streamReader = new StreamReader(Request.Body, Encoding.UTF8))
+            using (var streamReader = new StreamReader(Request.Body, Encoding.ASCII))
             {
-                bodyAsString = streamReader.ReadToEnd();
+                bodyAsString = await streamReader.ReadToEndAsync();
+             
+                
             }
-            return bodyAsString;
+            var info = Regex.Match(bodyAsString, @"\S*,").ToString();
+            var format = Regex.Match(info, @"(?<=data:image/\w*;)(\w*)").ToString();
+            if (format == "base64")
+            {
+                string type = Regex.Match(info.ToString(), @"(?<=data:image/)\w*").ToString().ToLower();
+                var imgContent = bodyAsString.Substring(info.Length);
+                byte[] data = Convert.FromBase64String(imgContent);
+                MemoryStream ms1 = new MemoryStream(data);
+                var name = Path.Combine("images", "usrimg", Regex.Match(info.ToString(), @"[\w*,\s,\.]+(?=;)").ToString() + "." + type);
+                using (var imageFile = new FileStream(Path.Combine(_environment.WebRootPath, name), FileMode.Create))
+                {
+                    imageFile.Write(data, 0, data.Length);
+                    imageFile.Flush();
+                }
+                return @"\"+name;
+            }
+            return "Error";
+
         }
     }
 }
