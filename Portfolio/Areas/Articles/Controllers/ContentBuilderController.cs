@@ -42,8 +42,9 @@ namespace Portfolio.Areas.Articles
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Index([Bind("Title")] SectionBuilder builder)
+        public IActionResult Index(string json)
         {
+            builder = SectionBuilder.Deserialize(json);
             return View(builder);
         }
 

@@ -4,7 +4,7 @@
     "inputFiles": [
       "wwwroot/js/site.js"
     ]
-  },
+  }
   //{
   //  "outputFileName": "Scripts/js/bundle.js",
   //  "inputFiles": [
@@ -12,16 +12,4 @@
   //    "Scripts/js/pagebuilder.js"
   //  ]
   //},
-  {
-    "outputFileName": "wwwroot/js/sectionbuilder.js",
-    "inputFiles": [
-      "Scripts/js/sectionbuilder.js"
-    ]
-  },
-  {
-    "outputFileName": "wwwroot/js/pagebuilder.js",
-    "inputFiles": [
-      "Scripts/js/pagebuilder.js"
-    ]
-  }
 ]

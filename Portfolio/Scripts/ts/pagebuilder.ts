@@ -61,7 +61,9 @@ export function init(json: string) {
     imgContentTemplate = $("." + (<any>tmp4).constructor.name)[0].innerHTML;
     controlTemplate = $(".content-control")[0].innerHTML;
 }
-
+export function save(){
+    $('#json').val(JSON.stringify(builder.toJSON()));
+}
 
 /**
  * Swap the elements position with its upper neighbour
@@ -246,12 +248,12 @@ function imgContent(content: JQuery<HTMLElement>, el: ImageContent, id: string):
     save.click(function () {
         el.alt = alt.val().toString();
         var file = src.prop('files')[0];
-        uploadImage(file,el);
+        uploadImage(file, el);
     });
 
     return content;
 
-    function uploadImage(file: any, c: ImageContent){
+    function uploadImage(file: any, c: ImageContent) {
         let reader = new FileReader();
         //$.ajax({
         //    url: window.location.href + "/AddImage",

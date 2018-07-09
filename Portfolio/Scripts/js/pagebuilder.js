@@ -56,6 +56,10 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
         controlTemplate = $(".content-control")[0].innerHTML;
     }
     exports.init = init;
+    function save() {
+        $('#json').val(builder.toJSON());
+    }
+    exports.save = save;
     /**
      * Swap the elements position with its upper neighbour
      * @param el the element to swap

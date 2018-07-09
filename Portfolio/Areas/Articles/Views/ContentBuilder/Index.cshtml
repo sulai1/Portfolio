@@ -1,9 +1,9 @@
 ﻿@model Portfolio.Areas.Articles.Data.SectionBuilder;
-@using Newtonsoft.Json;
+@using Portfolio.Areas.Articles.Data;
 @{
 
     ViewData["Title"] = "SectionBuilder";
-    var json = Html.Raw(JsonConvert.SerializeObject(Model).ToString());
+    var json = Html.Raw(Model.Serialize());
 
 }
 @await Html.PartialAsync("Content")
@@ -12,7 +12,6 @@
     <div class="breadcrumb" id="container">
         <script data-main="/js/config" src="~/lib/require.js"></script>
         <script>
-            var builder;
             var draw;
             var create;
             require(['config', 'pagebuilder'], function (config, pb) {
@@ -29,6 +28,9 @@
                 }
                 pb.init(@json);
                 draw();
+                save = function () {
+                    pb.save();
+                }
             })
         </script>
     </div>
@@ -38,7 +40,10 @@
         <button class="btn btn-primary" onclick="create('sample')"><i class="fa fa-eye"></i></button>
         <button class="btn btn-primary" onclick="create('img')"><i class="fa fa-image"></i></button>
     </div>
-    <div class="btn-group rounded">
-        <button class="btn btn-primary" onclick=""><i class="fa fa-save"></i></button>
-    </div>
+    <form method="post">
+        <div class="btn-group rounded">
+            <input id="json" type="hidden" name="json"/>
+            <button class="btn btn-primary" type="submit" onclick="save()"><i class="fa fa-save"></i></button>
+        </div>
+    </form>
 </body>
