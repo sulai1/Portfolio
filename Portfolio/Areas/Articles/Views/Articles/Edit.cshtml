@@ -2,11 +2,10 @@
 
 @{
     ViewData["Title"] = "Edit";
+    TempData["Back"] = Context.Request.Path.ToString();
 }
 
-<h2>Edit</h2>
-
-<h4>Article</h4>
+<h2>Edit Article</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -33,11 +32,13 @@
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>
-        <a asp-controller="Sections" asp-action="Index" asp-route-id="@Model.ArticleId">View Sections</a>
+        <hr />
+        <h2>Sections</h2>
+        @await Html.PartialAsync("../Sections/Index", Model)
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="row">
+    <a class="col-12" asp-action="Index">Back to List</a>
 </div>
 

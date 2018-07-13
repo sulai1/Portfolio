@@ -9,26 +9,47 @@
 <div>
     <h4>Article</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    <dl class="dl-horizontal row">
+        <dt class="col-sm-3">
             @Html.DisplayNameFor(model => model.Title)
         </dt>
-        <dd>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Category)
         </dd>
-        <dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Owner.UserName)
+        </dt>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Owner.UserName)
         </dd>
-        <dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Group)
+        </dt>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Group)
         </dd>
-        <dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.CreationDate)
         </dd>
-        <dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.LastModified)
+        </dt>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.LastModified)
         </dd>
-        <dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.IsPublic)
+        </dt>
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.IsPublic)
         </dd>
     </dl>

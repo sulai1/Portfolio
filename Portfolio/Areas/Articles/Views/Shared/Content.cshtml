@@ -1,71 +1,97 @@
 ﻿@using Portfolio.Areas.Articles.Models
 
 <template class="content-control">
-    <div class="col-3 d-flex align-items-end">
-        <div class="btn-group">
-            <button type="button" class="btn btn-outline-primary up"><span class="fa fa-angle-up" aria-hidden="true"></span></button>
-            <button type="button" class="btn btn-outline-primary down"><span class="fa fa-angle-down" aria-hidden="true"></span></button>
-            <button type="button" class="btn btn-outline-primary edit-btn"><span class="fa fa-edit" aria-hidden="true"></span></button>
+    <div class="col-md-3 d-flex align-items-end">
+            <div class="btn-group mr-2 col-1" role="group">
+                <button type="button" class="btn btn-outline-primary up"
+                        data-toggle="tooltip" data-placement="top" title="move up">
+                    <span class="fa fa-angle-up" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-outline-primary down"
+                        data-toggle="tooltip" data-placement="top" title="move down">
+                    <span class="fa fa-angle-down" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-outline-primary edit-btn"
+                        data-toggle="tooltip" data-placement="top" title="edit">
+                    <span class="fa fa-edit" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-outline-danger delete"
+                        data-toggle="tooltip" data-placement="top" title="delete">
+                    <span class="fa fa-times" aria-hidden="true"></span>
+                </button>
         </div>
     </div>
 </template>
+<!--#region TextContent-->
+<template id="@nameof(TextContent)-edit">
+    <div class="edit">
+        <textarea class="form-control text-edit"></textarea>
+        <button class="btn btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
+    </div>
+</template>
 
-<template class="@nameof(TextContent)">
+<template id="@nameof(TextContent)">
     <div class="row">
-        <div class="col-9">
+        <div class="col-md content-col">
             <p class="conent">
                 text goes here
             </p>
-            <div class="edit">
-                <textarea class="form-control text-edit"></textarea>
-                <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
-            </div>
-            <hr />
         </div>
     </div>
 </template>
+<!--#endregion-->
+<!--#region CodeContent-->
+<template id="@nameof(CodeContent)-edit">
+    <div class="edit">
+        <textarea class="form-control text-edit"></textarea>
+        <select class="form-control type-edit">
+            <option value="html">HTML</option>
+        </select>
+        <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
+    </div>
+</template>
 
-<template class="@nameof(CodeContent)">
+<template id="@nameof(CodeContent)">
     <div class="row">
-        <div class="col">
+        <div class="col-md  content-col">
             <pre class="pre-scrollable"><code></code></pre>
-            <div class="edit">
-                <textarea class="form-control text-edit"></textarea>
-                <select class="form-control type-edit">
-                    <option value="html">HTML</option>
-                </select>
-                <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
-            </div>
             <hr />
         </div>
     </div>
 </template>
-
-<template class="@nameof(ExampleContent)" id="sample">
+<!--#endregion-->
+<!--#region ExampleContent-->
+<template id="@nameof(ExampleContent)-edit">
+    <div class="edit">
+        <textarea class="form-control text-edit"></textarea>
+        <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
+    </div>
+</template>
+<template id="@nameof(ExampleContent)">
     <div class="row">
-        <div class="col">
+        <div class="col-md  content-col">
             <div class="sample"></div>
-            <div class="edit">
-                <textarea class="form-control text-edit"></textarea>
-                <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
-            </div>
-            <hr />
         </div>
     </div>
 </template>
-
-<template class="@nameof(ImageContent)" id="img">
+<!--#endregion-->
+<!--#region ImageContent-->
+<template id="@nameof(ImageContent)-edit">
+    <div class="edit">
+        <label class="col-form-label">Alternative text</label>
+        <input class="form-control alt-edit" type="text" />
+        <label class="col-form-label">File Path</label>
+        <input class="form-control src-edit" type="file" accept="image/*" />
+        <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
+    </div>
+</template>
+<template id="@nameof(ImageContent)">
     <div class="row">
-        <div class="col">
+        <div class="col-md content-col">
             ​<picture>
                 <img src="..." class="img-fluid img-thumbnail" alt="...">
             </picture>
-            <div class="edit">
-                <input class="form-control alt-edit" type="text" />
-                <input class="form-control src-edit" type="file" accept="image/*" />
-                <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
-            </div>
-            <hr />
         </div>
     </div>
 </template>
+<!--#endregion-->

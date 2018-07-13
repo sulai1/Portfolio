@@ -55,6 +55,9 @@
     <Content Update="Areas\Articles\Views\Articles\Article.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Areas\Articles\Views\Sections\View.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Areas\Articles\Views\_ViewImports.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -181,7 +184,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Articles\Pages\" />
-    <Folder Include="Scripts\js\" />
     <Folder Include="wwwroot\images\usrimg\" />
     <Folder Include="wwwroot\json\" />
   </ItemGroup>

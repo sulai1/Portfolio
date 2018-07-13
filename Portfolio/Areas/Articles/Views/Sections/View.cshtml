@@ -2,7 +2,7 @@
 @using Portfolio.Areas.Articles.Data;
 @{
 
-    ViewData["Title"] = "SectionBuilder";
+    ViewData["Title"] = Model.Title;
     var json = Html.Raw(Model.Serialize());
     var back = @TempData["Back"];
 
@@ -11,8 +11,8 @@
 <body>
     <h2>@Model.Title</h2>
     <div class="breadcrumb" id="container">
-            <script data-main="/js/config" src="~/lib/require.js"></script>
-            <script>
+        <script data-main="/js/config" src="~/lib/require.js"></script>
+        <script>
             var draw;
             var create;
             require(['config', 'pagebuilder'], function (config, pb) {
@@ -27,28 +27,14 @@
                     pb.create(type);
                     draw();
                 }
-                pb.init(@json);
+                pb.init(@json,false);
                 draw();
                 save = function () {
                     pb.save();
                 }
             })
-            </script>
-        </div>
+        </script>
     </div>
-    <div class="btn-group rounded">
-        <button class="btn btn-primary " onclick="create('text')"><i class="fa fa-align-left"></i></button>
-        <button class="btn btn-primary" onclick="create('code')"><i class="fa fa-code"></i></button>
-        <button class="btn btn-primary" onclick="create('sample')"><i class="fa fa-eye"></i></button>
-        <button class="btn btn-primary" onclick="create('img')"><i class="fa fa-image"></i></button>
-    </div>
-    <form method="post">
-        <div class="btn-group rounded">
-            <input id="json" type="hidden" name="json" />
-            <input id="id" type="hidden" name="id" value="@Model.Id" />
-            <button class="btn btn-primary" type="submit" onclick="save()"><i class="fa fa-save"></i></button>
-        </div>
-    </form>
     @if (back != null)
     {
         <a href="@back"><i class="fas fa-long-arrow-alt-left"></i>back</a>

@@ -15,10 +15,8 @@ namespace Portfolio.Areas.Articles.Data
     //TODO:Document Jsonschema4 usage
     public class SectionBuilder
     {
-
-        enum ContentType { TEXT, CODE, EXAMPLE, IMAGE };
+        public int Id { get; set; }
         public string Title { get; set; }
-        public List<SubSection> SubSections { get; set; } = new List<SubSection>();
         public List<IContent> Content { get; set; } = new List<IContent>();
 
         public static readonly JsonSerializerSettings settings = new JsonSerializerSettings()

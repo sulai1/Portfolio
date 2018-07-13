@@ -14,6 +14,10 @@ namespace Portfolio.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+        public DbSet<Article> Articles { get; set; }
+
+        public DbSet<Section> Section { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -31,10 +35,15 @@ namespace Portfolio.Data
             }
         }
 
-        public DbSet<Article> Articles { get; set; }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
 
-        public DbSet<Section> Section { get; set; }
-
+            builder.Entity<Section>()
+            .HasOne(p => p.Article)
+            .WithMany(b => b.Sections)
+            .OnDelete(DeleteBehavior.Cascade);
+        }
         public async Task<Article> ArticleWithSections(int id)
         {
             var article = await Articles.FindAsync(id);

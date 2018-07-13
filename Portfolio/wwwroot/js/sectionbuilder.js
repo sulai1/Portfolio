@@ -17,34 +17,6 @@ var __extends = (this && this.__extends) || (function () {
 define(["require", "exports"], function (require, exports) {
     "use strict";
     exports.__esModule = true;
-    var SubSection = /** @class */ (function () {
-        function SubSection(data) {
-            if (data) {
-                for (var property in data) {
-                    if (data.hasOwnProperty(property))
-                        this[property] = data[property];
-                }
-            }
-        }
-        SubSection.prototype.init = function (data) {
-            if (data) {
-                this.title = data["Title"];
-            }
-        };
-        SubSection.fromJS = function (data) {
-            data = typeof data === 'object' ? data : {};
-            var result = new SubSection();
-            result.init(data);
-            return result;
-        };
-        SubSection.prototype.toJSON = function (data) {
-            data = typeof data === 'object' ? data : {};
-            data["Title"] = this.title;
-            return data;
-        };
-        return SubSection;
-    }());
-    exports.SubSection = SubSection;
     var IContent = /** @class */ (function () {
         function IContent(data) {
             if (data) {
@@ -229,18 +201,12 @@ define(["require", "exports"], function (require, exports) {
         }
         SectionBuilder.prototype.init = function (data) {
             if (data) {
+                this.id = data["Id"];
                 this.title = data["Title"];
-                if (data["SubSections"] && data["SubSections"].constructor === Array) {
-                    this.subSections = [];
-                    for (var _i = 0, _a = data["SubSections"]; _i < _a.length; _i++) {
-                        var item = _a[_i];
-                        this.subSections.push(SubSection.fromJS(item));
-                    }
-                }
                 if (data["Content"] && data["Content"].constructor === Array) {
                     this.content = [];
-                    for (var _b = 0, _c = data["Content"]; _b < _c.length; _b++) {
-                        var item = _c[_b];
+                    for (var _i = 0, _a = data["Content"]; _i < _a.length; _i++) {
+                        var item = _a[_i];
                         this.content.push(IContent.fromJS(item));
                     }
                 }
@@ -254,18 +220,12 @@ define(["require", "exports"], function (require, exports) {
         };
         SectionBuilder.prototype.toJSON = function (data) {
             data = typeof data === 'object' ? data : {};
+            data["Id"] = this.id;
             data["Title"] = this.title;
-            if (this.subSections && this.subSections.constructor === Array) {
-                data["SubSections"] = [];
-                for (var _i = 0, _a = this.subSections; _i < _a.length; _i++) {
-                    var item = _a[_i];
-                    data["SubSections"].push(item.toJSON());
-                }
-            }
             if (this.content && this.content.constructor === Array) {
                 data["Content"] = [];
-                for (var _b = 0, _c = this.content; _b < _c.length; _b++) {
-                    var item = _c[_b];
+                for (var _i = 0, _a = this.content; _i < _a.length; _i++) {
+                    var item = _a[_i];
                     data["Content"].push(item.toJSON());
                 }
             }

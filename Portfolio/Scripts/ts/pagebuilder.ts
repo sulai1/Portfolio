@@ -1,23 +1,17 @@
-﻿import { TextContent, CodeContent, ExampleContent, IContent, SectionBuilder, ImageContent } from './sectionbuilder';
+﻿import { TextContent, CodeContent, ExampleContent, IContent, SectionBuilder, ImageContent, IImageContent } from './sectionbuilder';
 import { URL } from 'url';
 import { error } from 'util';
 import { win32 } from 'path';
 import { read } from 'fs';
 
+var textBuilder: TextBuilder;
+var codeBuilder: CodeBuilder;
+var sampleBuilder: ExampleBuilder;
+var imgBuilder: ImageBuilder;
 
-var textContentTemplate: string;
-var codeContentTemplate: string;
-var sampleContentTemplate: string;
-var imgContentTemplate: string;
 var controlTemplate: string;
 
 var builder: SectionBuilder;
-
-function toDisplayableCode(string: string): string {
-    string = string.replace(/</g, '&lt;');
-    string = string.replace(/>/g, '&gt;');
-    return string;
-}
 
 export function create(type: string) {
     switch (type) {
@@ -43,25 +37,31 @@ export function create(type: string) {
             builder.content.push(d);
             break;
     }
+    draw();
 }
 /**
  * Create a new Sectionbuilder from the json string.
  * Load all of the content and control templates from the document
  * @param json The json string that is used to create the Sectionbuilder
  */
-export function init(json: string) {
+export function init(json: string, edit = true) {
+    const ed = "-edit";
     builder = SectionBuilder.fromJS(json);
     let tmp1 = new TextContent();
-    textContentTemplate = $("." + (<any>tmp1).constructor.name)[0].innerHTML;
+    textBuilder = new TextBuilder($("#" + (<any>tmp1).constructor.name)[0].innerHTML,
+        $("#" + (<any>tmp1).constructor.name + ed)[0].innerHTML, edit);
     let tmp2 = new CodeContent();
-    codeContentTemplate = $("." + (<any>tmp2).constructor.name)[0].innerHTML;
+    codeBuilder = new CodeBuilder($("#" + (<any>tmp2).constructor.name)[0].innerHTML,
+        $("#" + (<any>tmp2).constructor.name + ed)[0].innerHTML, edit);
     let tmp3 = new ExampleContent();
-    sampleContentTemplate = $("." + (<any>tmp3).constructor.name)[0].innerHTML;
+    sampleBuilder = new ExampleBuilder($("#" + (<any>tmp3).constructor.name)[0].innerHTML,
+        $("#" + (<any>tmp3).constructor.name + ed)[0].innerHTML, edit);
     let tmp4 = new ImageContent();
-    imgContentTemplate = $("." + (<any>tmp4).constructor.name)[0].innerHTML;
+    imgBuilder = new ImageBuilder($("#" + (<any>tmp4).constructor.name)[0].innerHTML,
+        $("#" + (<any>tmp4).constructor.name + ed)[0].innerHTML, edit);
     controlTemplate = $(".content-control")[0].innerHTML;
 }
-export function save(){
+export function save() {
     $('#json').val(JSON.stringify(builder.toJSON()));
 }
 
@@ -107,153 +107,226 @@ export function down(el: JQuery<HTMLElement>) {
  * creating new Content if not allready displayed or reusing old elements.
  * */
 export function draw() {
-    var contents = function (content) {
-        var col = $("#col")
-        if (col.length == 0)
-            col = $('<div class="col" id="col"></div>');
-        $('#container').append(col);
-        for (var i = 0; i < content.length; i++) {
-            var el = content[i];
-            var id = "Content" + i;
-            var c = $("#" + id);
-            if (c.length == 0) {
-                if (el instanceof ExampleContent) {
-                    let clone = initContent(i, sampleContentTemplate, col);
-                    sampleContent(clone, el as ExampleContent, id);
-                } else if (el instanceof CodeContent) {
-                    let clone = initContent(i, codeContentTemplate, col);
-                    codeContent(clone, el as CodeContent, id);
-                }
-                else if (el instanceof TextContent) {
-                    let clone = initContent(i, textContentTemplate, col);
-                    textContent(clone, el as TextContent, id);
-                }
-                else if (el instanceof ImageContent) {
-                    let clone = initContent(i, imgContentTemplate, col);
-                    imgContent(clone, el as ImageContent, id);
-                }
-            } else {
-                if (el instanceof ExampleContent) {
-                    sampleContent(c, el as CodeContent, id);
-                }
-                else if (el instanceof CodeContent) {
-                    codeContent(c, el as CodeContent, id);
-                }
-                else if (el instanceof TextContent) {
-                    textContent(c, el as CodeContent, id);
-                }
-                else if (el instanceof ImageContent) {
-                    imgContent(c, el as ImageContent, id);
-                }
+    var col = $('#container');
+    for (var i = 0; i < builder.content.length; i++) {
+        var el = builder.content[i];
+        var id = "Content" + i;
+        var c = $("#" + id);
+        // check if element was allready created
+        if (c.length == 0) {
+            if (el instanceof ExampleContent) {
+                c = sampleBuilder.init(i, el, col);
+            }
+            else if (el instanceof CodeContent) {
+                c = codeBuilder.init(i, el, col);
+            }
+            else if (el instanceof TextContent) {
+                c = textBuilder.init(i, el, col);
+            }
+            else if (el instanceof ImageContent) {
+                c = imgBuilder.init(i, el, col);
+            }
+        }
+        else {
+            if (el instanceof ExampleContent) {
+                sampleBuilder.setContent(c, el);
+            }
+            else if (el instanceof CodeContent) {
+                codeBuilder.setContent(c, el);
+            }
+            else if (el instanceof TextContent) {
+                textBuilder.setContent(c, el);
+            }
+            else if (el instanceof ImageContent) {
+                imgBuilder.setContent(c, el);
             }
         }
     }
-    contents(builder.content);
+}
+
+function toDisplayableCode(string: string): string {
+    string = string.replace(/</g, '&lt;');
+    string = string.replace(/>/g, '&gt;');
+    return string;
 }
 
 function indexOf(el: JQuery<HTMLElement>): number {
     return parseInt(el.attr("id").match(/\d*$/)[0]);
 }
+//#region ContentBuilding
+abstract class IContentBuilder<T extends IContent>{
 
-/**
- * Create new content and append it to the content area.
- * @param id The id is used to find the content in the document
- * @param template The template is used to create the element
- * @param area The content area where the new element is added to 
- */
-function initContent(id: number, template: string, area: JQuery<HTMLElement>) {
-    let content = $(template);
-    let control = $(controlTemplate);
+    private edit: boolean;
+    private editTemplate: string;
+    private template: string;
 
-    content.attr("id", "Content" + id);
+    private static readonly content_col = ".content-col";
+    /**
+     * Create new contentbuilder that uses the given templates.
+     * @param template The template is used to create the element
+     * @param controlTemplate The template is used to create and bind the control elements
+     */
+    public constructor(template: string, controlTemplate: string, edit = false) {
+        this.template = template;
+        this.editTemplate = controlTemplate;
+        this.edit = edit;
+    }
 
-    // hide edit
-    let edit = content.find(".edit");
-    edit.hide(0);
-    control.find(".edit-btn").click(function () {
-        edit.toggle();
-    });
+    /**
+     * Initialize a new content and add it to the html document
+     * @param index the index of the element. Used for re/ordering
+     * @param content the IContent element to store the data
+     * @param area the area that holds the element.
+     * @param editable add and bind edit template if the content is editable
+     */
+    public init(index: number, content: T, area: JQuery<HTMLElement>): JQuery<HTMLElement> {
+        let element = $(this.template);
+        element.attr("id", "Content" + index);
+        //only add edits when required
+        if (this.edit) {
+            let control = $(controlTemplate);
+            let col = element.find(IContentBuilder.content_col);
+            col.append(this.editTemplate);
+            element.append(control);
+
+            // hide edit
+            let edit = element.find(".edit");
+            edit.hide(0);
+            control.find(".edit-btn").click(function () {
+                edit.toggle();
+            });
+            // swap up and down
+            control.find(".up").click(function () {
+                up(element);
+            });
+            control.find(".down").click(function () {
+                down(element);
+            });
+            control.find(".delete").click(function () {
+                if (confirm("Delete Element?")) {
+                    element.remove();
+                    for (var i = index + 1; i < builder.content.length; i++) {
+                        $("Content" + i).attr("id", "Content" + (i - 1));
+                    }
+                    builder.content.splice(index, 1);
+                }
+            });
+            this.bindEdit(element, content);
+        }
 
 
-    // swap up and down
-    control.find(".up").click(function () {
-        up(content);
-    });
-    control.find(".down").click(function () {
-        down(content);
-    });
-
-    // add the content
-    content.append(control);
-    area.append(content);
-    return content;
+        // add the content
+        area.append(element);
+        this.setContent(element, content);
+        return element;
+    }
+    public bindEdit(element: JQuery<HTMLElement>, content: T): JQuery<HTMLElement> {
+        let save = element.find(".save-btn");
+        save.click(() => {
+            this.save(element, content);
+            draw();
+        });
+        this.setEdit(element, content);
+        return element;
+    }
+    /**
+     * Set the html display elements using the supplied contents
+     * @param element the element containing the display elements
+     * @param content the content to use
+     */
+    public abstract setContent(element: JQuery<HTMLElement>, content: T): JQuery<HTMLElement>;
+    /**
+     * Initialize the edits using the supplied contents
+     * @param element the element containing the edit elements
+     * @param content the content to use
+     */
+    public abstract setEdit(element: JQuery<HTMLElement>, content: T);
+    /**
+     * Save the edited values to the content
+     * @param element the element containing the edits
+     * @param content the content to update
+     */
+    public abstract save(element: JQuery<HTMLElement>, content: T);
 }
-
-function codeContent(content: JQuery<HTMLElement>, el: CodeContent, id: string): JQuery<HTMLElement> {
-    let code = content.find('code').first();
-    code.attr("class", el.type);
-    code.html(toDisplayableCode(el.text));
-
-    // bind text and type
-    let text = content.find(".text-edit");
-    text.text(el.text);
-
-    let type = content.find(".type-edit");
-    type.val(el.type);
-
-    let save = content.find(".save-btn");
-    save.click(function () {
-        el.text = text.val().toString();
-        el.type = type.val().toString();
-        draw();
-    });
-    return content;
+class TextBuilder extends IContentBuilder<TextContent> {
+    public setEdit(element: JQuery<HTMLElement>, content: TextContent) {
+        let edit = element.find(".text-edit");
+        edit.text(content.text);
+    }
+    public setContent(element: JQuery<HTMLElement>, content: TextContent): JQuery<HTMLElement> {
+        element.find('p').first().text(content.text).text(content.text);
+        return element;
+    }
+    public save(element: JQuery<HTMLElement>, content: TextContent) {
+        // bind edit
+        let edit = element.find(".text-edit");
+        let save = element.find(".save-btn");
+        content.text = edit.val().toString();
+    }
 }
+class CodeBuilder extends IContentBuilder<CodeContent> {
 
-function textContent(content: JQuery<HTMLElement>, el: TextContent, id: string): JQuery<HTMLElement> {
-    content.find('p').first().text(el.text).text(el.text);
-    // bind edit
-    let edit = content.find(".text-edit");
-    let save = content.find(".save-btn");
-    edit.val(el.text);
-    save.click(function () {
-        el.text = edit.val().toString();
-        draw();
-    });
-    return content;
+    public setEdit(element: JQuery<HTMLElement>, content: CodeContent) {
+        let text = element.find(".text-edit");
+        text.text(content.text)
+    }
+    public setContent(element: JQuery<HTMLElement>, content: CodeContent): JQuery<HTMLElement> {
+        let code = element.find('code').first();
+        code.attr("class", content.type);
+        code.html(toDisplayableCode(content.text));
+        return element;
+    }
+    public
+
+    public save(element: JQuery<HTMLElement>, content: CodeContent) {
+        let text = element.find(".text-edit");
+        let type = element.find(".type-edit");
+        content.text = text.val().toString();
+        content.type = type.val().toString();
+    }
 }
-function sampleContent(content: JQuery<HTMLElement>, el: ExampleContent, id: string): JQuery<HTMLElement> {
-    content.find('.sample').first().html(el.text);
-    // bind edit
-    let text = content.find(".text-edit");
-    text.val(el.text);
-    let save = content.find(".save-btn");
-    save.click(function () {
-        el.text = text.val().toString();
-        draw();
-    });
-    return content;
+class ExampleBuilder extends IContentBuilder<ExampleContent> {
+    public setEdit(element: JQuery<HTMLElement>, content: ExampleContent) {
+        let edit = element.find(".text-edit");
+        edit.val(content.text);
+    }
+    public setContent(element: JQuery<HTMLElement>, content: ExampleContent): JQuery<HTMLElement> {
+        let sample = element.find(".sample");
+        sample.html(content.text);
+        return element;
+    }
+    public save(element: JQuery<HTMLElement>, content: ExampleContent) {
+        content.text = element.find('.text-edit').val().toString();
+    }
 }
-function imgContent(content: JQuery<HTMLElement>, el: ImageContent, id: string): JQuery<HTMLElement> {
-    let img = content.find('img').first();
-    img.attr("src", el.path);
-    img.attr("alt", el.alt);
-    // bind edit
-    let alt = content.find(".alt-edit");
-    alt.val(el.alt);
+class ImageBuilder extends IContentBuilder<ImageContent> {
+    public setEdit(element: JQuery<HTMLElement>, content: ImageContent) {
+        let alt = element.find(".alt-edit");
+        alt.text(content.alt);
+        let src = element.find(".src-edit");
+        src.text(content.path);
+    }
+    public setContent(element: JQuery<HTMLElement>, content: IImageContent): JQuery<HTMLElement> {
+        let img = element.find('img').first();
+        img.attr("src", content.path);
+        img.attr("alt", content.alt);
+        return element;
+    }
+    public save(element: JQuery<HTMLElement>, content: ImageContent) {
+        let img = element.find('img').first();
+        // bind edit
+        let alt = element.find(".alt-edit");
+        alt.val(content.alt);
 
-    let src = content.find(".src-edit");
+        let src = element.find(".src-edit");
 
-    let save = content.find(".save-btn");
-    save.click(function () {
-        el.alt = alt.val().toString();
+        let save = element.find(".save-btn");
+        content.alt = alt.val().toString();
         var file = src.prop('files')[0];
-        uploadImage(file, el);
-    });
+        this.uploadImage(file, content);
 
-    return content;
-
-    function uploadImage(file: any, c: ImageContent) {
+    }
+    private uploadImage(file: any, c: ImageContent) {
         let reader = new FileReader();
         //$.ajax({
         //    url: window.location.href + "/AddImage",
@@ -273,7 +346,9 @@ function imgContent(content: JQuery<HTMLElement>, el: ImageContent, id: string):
             // send response as text
             request.responseType = "text";
             // send a post to add the image
-            request.open('POST', window.location.href + "/AddImage");
+            var href = window.location.href;
+            var url = href.substr(0, href.lastIndexOf("/"));
+            request.open('POST', url + "/AddImage");
             // display the response when it comes in
             request.onload = function () {
                 alert(request.response);
@@ -286,3 +361,4 @@ function imgContent(content: JQuery<HTMLElement>, el: ImageContent, id: string):
         reader.readAsDataURL(file);
     }
 }
+//#endregion

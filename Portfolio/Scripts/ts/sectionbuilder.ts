@@ -9,42 +9,6 @@
 
 
 
-export class SubSection implements ISubSection {
-    title!: string | undefined;
-
-    constructor(data?: ISubSection) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(data?: any) {
-        if (data) {
-            this.title = data["Title"];
-        }
-    }
-
-    static fromJS(data: any): SubSection {
-        data = typeof data === 'object' ? data : {};
-        let result = new SubSection();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["Title"] = this.title;
-        return data; 
-    }
-}
-
-export interface ISubSection {
-    title: string | undefined;
-}
-
 export abstract class IContent implements IIContent {
 
     protected _discriminator: string;
@@ -251,8 +215,8 @@ export interface IImageContent extends IIContent {
 }
 
 export class SectionBuilder implements ISectionBuilder {
+    id!: number;
     title!: string | undefined;
-    subSections!: SubSection[] | undefined;
     content!: IContent[] | undefined;
 
     constructor(data?: ISectionBuilder) {
@@ -266,12 +230,8 @@ export class SectionBuilder implements ISectionBuilder {
 
     init(data?: any) {
         if (data) {
+            this.id = data["Id"];
             this.title = data["Title"];
-            if (data["SubSections"] && data["SubSections"].constructor === Array) {
-                this.subSections = [];
-                for (let item of data["SubSections"])
-                    this.subSections.push(SubSection.fromJS(item));
-            }
             if (data["Content"] && data["Content"].constructor === Array) {
                 this.content = [];
                 for (let item of data["Content"])
@@ -289,12 +249,8 @@ export class SectionBuilder implements ISectionBuilder {
 
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
+        data["Id"] = this.id;
         data["Title"] = this.title;
-        if (this.subSections && this.subSections.constructor === Array) {
-            data["SubSections"] = [];
-            for (let item of this.subSections)
-                data["SubSections"].push(item.toJSON());
-        }
         if (this.content && this.content.constructor === Array) {
             data["Content"] = [];
             for (let item of this.content)
@@ -305,7 +261,7 @@ export class SectionBuilder implements ISectionBuilder {
 }
 
 export interface ISectionBuilder {
+    id: number;
     title: string | undefined;
-    subSections: SubSection[] | undefined;
     content: IContent[] | undefined;
 }

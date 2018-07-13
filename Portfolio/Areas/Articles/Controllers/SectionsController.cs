@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Portfolio.Areas.Articles.Data;
 using Portfolio.Areas.Articles.Models;
 using Portfolio.Data;
 using Portfolio.Models;
@@ -16,9 +21,13 @@ namespace Portfolio.Areas.Articles.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public SectionsController(ApplicationDbContext context)
+        private readonly IHostingEnvironment _environment;
+
+
+        public SectionsController(ApplicationDbContext context, IHostingEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
         // GET: Sections
         public async Task<IActionResult> Index(int id)
@@ -27,23 +36,97 @@ namespace Portfolio.Areas.Articles.Controllers
             return View(article);
         }
 
-        // GET: Sections/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult View(int? id)
         {
-            if (id == null)
+            SectionBuilder builder;
+            if (id != null)
             {
-                return NotFound();
+                var section = _context.Section.Find(id);
+                if (section.Content != null)
+                {
+                    builder = SectionBuilder.Deserialize(section.Content);
+                }
+                else
+                {
+                    builder = new SectionBuilder();
+                }
+                builder.Id = section.SectionId;
+                builder.Title = section.Title;
             }
-
-            var section = await _context.Section
-                .FirstOrDefaultAsync(m => m.SectionId == id);
-            if (section == null)
+            else
             {
-                return NotFound();
+                builder = new SectionBuilder();
             }
-
-            return View(section);
+            return View(builder);
         }
+
+        public IActionResult Edit(int? id)
+        {
+            SectionBuilder builder;
+            if (id != null)
+            {
+                var section = _context.Section.Find(id);
+                if (section.Content != null)
+                {
+                    builder = SectionBuilder.Deserialize(section.Content);
+                }
+                else
+                {
+                    builder = new SectionBuilder();
+                }
+                builder.Id = section.SectionId;
+                builder.Title = section.Title;
+            }
+            else
+            {
+                builder = new SectionBuilder();
+            }
+            return View(builder);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string json)
+        {
+            SectionBuilder builder= Data.SectionBuilder.Deserialize(json);
+            var section = _context.Section.Find(builder.Id);
+            section.Title = builder.Title;
+            section.Content = json;
+            //ToDo Validate json
+            await _context.SaveChangesAsync();
+            return View(builder);
+        }
+
+        [HttpPost]
+        public async Task<string> AddImage()
+        {
+            string bodyAsString;
+            using (var streamReader = new StreamReader(Request.Body, Encoding.ASCII))
+            {
+                bodyAsString = await streamReader.ReadToEndAsync();
+
+
+            }
+            var info = Regex.Match(bodyAsString, @"\S*,").ToString();
+            var format = Regex.Match(info, @"(?<=data:image/\w*;)(\w*)").ToString();
+            if (format == "base64")
+            {
+                string type = Regex.Match(info.ToString(), @"(?<=data:image/)\w*").ToString().ToLower();
+                var imgContent = bodyAsString.Substring(info.Length);
+                byte[] data = Convert.FromBase64String(imgContent);
+                MemoryStream ms1 = new MemoryStream(data);
+                var name = Path.Combine("images", "usrimg", Regex.Match(info.ToString(), @"[\w*,\s,\.]+(?=;)").ToString() + "." + type);
+                using (var imageFile = new FileStream(Path.Combine(_environment.WebRootPath, name), FileMode.Create))
+                {
+                    imageFile.Write(data, 0, data.Length);
+                    imageFile.Flush();
+                }
+                return @"\" + name;
+            }
+            return "Error";
+
+        }
+       
 
         // GET: Sections/Create
         public IActionResult Create(int? id)
@@ -73,56 +156,6 @@ namespace Portfolio.Areas.Articles.Controllers
             return View(section);
         }
 
-        // GET: Sections/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var section = await _context.Section.FindAsync(id);
-            if (section == null)
-            {
-                return NotFound();
-            }
-            return View(section);
-        }
-
-        // POST: Sections/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SectionId,Title,Content,Example,ArticleId")] Section section)
-        {
-            if (id != section.SectionId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(section);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!SectionExists(section.SectionId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index), new { id = section.ArticleId });
-            }
-            return View(section);
-        }
 
         // GET: Sections/Delete/5
         public async Task<IActionResult> Delete(int? id)
