@@ -14,9 +14,6 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </DestinationConnectionStrings>
   </ItemGroup>
   <ItemGroup>
-    <EFMigrations Include="Portfolio.Areas.Articles.Controllers.ArticleDbContext">
-      <Value>Data Source=tcp:portfolio20180626064919dbserver.database.windows.net,1433;Initial Catalog=Portfolio_db;User Id=sulai@portfolio20180626064919dbserver;Password=SbG631587</Value>
-    </EFMigrations>
     <EFMigrations Include="Portfolio.Data.ApplicationDbContext">
       <Value>Data Source=tcp:portfolio20180626064919dbserver.database.windows.net,1433;Initial Catalog=Portfolio_db;User Id=sulai@portfolio20180626064919dbserver;Password=SbG631587</Value>
     </EFMigrations>

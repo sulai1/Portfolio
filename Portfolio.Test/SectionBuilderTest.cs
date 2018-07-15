@@ -26,13 +26,6 @@ namespace Portfolio.Test
             this.builder = new SectionBuilder
             {
                 Title = "test",
-                SubSections = new List<SubSection>()
-                {
-                    new SubSection()
-                    {
-                        Title = "test.sub.0",
-                    }
-                },
                 Content = new List<IContent>()
                 {
                     new TextContent()

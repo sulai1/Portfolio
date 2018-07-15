@@ -197,13 +197,7 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
                     down(element);
                 });
                 control.find(".delete").click(function () {
-                    if (confirm("Delete Element?")) {
-                        element.remove();
-                        for (var i = index + 1; i < builder.content.length; i++) {
-                            $("Content" + i).attr("id", "Content" + (i - 1));
-                        }
-                        builder.content.splice(index, 1);
-                    }
+                    remove(element);
                 });
                 this.bindEdit(element, content);
             }
@@ -352,6 +346,16 @@ define(["require", "exports", "./sectionbuilder"], function (require, exports, s
         };
         return ImageBuilder;
     }(IContentBuilder));
+    function remove(element) {
+        var index = parseInt(element.attr("id").match(/\d*$/)[0]);
+        if (confirm("Delete Element?")) {
+            element.remove();
+            for (var i = index + 1; i < builder.content.length; i++) {
+                $("#Content" + i).attr("id", "Content" + (i - 1));
+            }
+            builder.content.splice(index, 1);
+        }
+    }
 });
 //#endregion
 //# sourceMappingURL=pagebuilder.js.map

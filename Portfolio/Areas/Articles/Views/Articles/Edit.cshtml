@@ -1,14 +1,13 @@
 ﻿@model Portfolio.Areas.Articles.Models.Article
-
+@using Portfolio.Areas.Articles.Data
 @{
     ViewData["Title"] = "Edit";
-    TempData["Back"] = Context.Request.Path.ToString();
 }
 
 <h2>Edit Article</h2>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ArticleId" />
@@ -34,7 +33,12 @@
         </form>
         <hr />
         <h2>Sections</h2>
-        @await Html.PartialAsync("../Sections/Index", Model)
+        @foreach (var item in Model.Sections){
+            var sb = SectionBuilder.Deserialize(item.Content);
+            sb.Id = item.SectionId;
+            sb.Title = item.Title;
+            @await Html.PartialAsync("../Sections/Edit", sb);
+        }
     </div>
 </div>
 

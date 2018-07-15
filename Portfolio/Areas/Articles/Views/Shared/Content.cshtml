@@ -1,8 +1,12 @@
 ﻿@using Portfolio.Areas.Articles.Models
 
+<!--
+Content Templates used by the pagebuilder    
+-->
 <template class="content-control">
     <div class="col-md-3 d-flex align-items-end">
-            <div class="btn-group mr-2 col-1" role="group">
+        <div class="btn-toolbar " role="group">
+            <div class="btn-group">
                 <button type="button" class="btn btn-outline-primary up"
                         data-toggle="tooltip" data-placement="top" title="move up">
                     <span class="fa fa-angle-up" aria-hidden="true"></span>
@@ -15,10 +19,14 @@
                         data-toggle="tooltip" data-placement="top" title="edit">
                     <span class="fa fa-edit" aria-hidden="true"></span>
                 </button>
+            </div>
+            <div class="mx-2"></div>
+            <div class="btn-group">
                 <button type="button" class="btn btn-outline-danger delete"
                         data-toggle="tooltip" data-placement="top" title="delete">
                     <span class="fa fa-times" aria-hidden="true"></span>
                 </button>
+            </div>
         </div>
     </div>
 </template>
@@ -47,13 +55,13 @@
         <select class="form-control type-edit">
             <option value="html">HTML</option>
         </select>
-        <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
+        <button class="btn btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
     </div>
 </template>
 
 <template id="@nameof(CodeContent)">
     <div class="row">
-        <div class="col-md  content-col">
+        <div class="col content-col">
             <pre class="pre-scrollable"><code></code></pre>
             <hr />
         </div>
@@ -64,13 +72,14 @@
 <template id="@nameof(ExampleContent)-edit">
     <div class="edit">
         <textarea class="form-control text-edit"></textarea>
-        <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
+        <button class="btn btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
     </div>
 </template>
 <template id="@nameof(ExampleContent)">
     <div class="row">
         <div class="col-md  content-col">
             <div class="sample"></div>
+            <hr />
         </div>
     </div>
 </template>
@@ -82,7 +91,7 @@
         <input class="form-control alt-edit" type="text" />
         <label class="col-form-label">File Path</label>
         <input class="form-control src-edit" type="file" accept="image/*" />
-        <button class="btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
+        <button class="btn btn-primary save-btn"><span class="fa fa-save" aria-hidden="true"></span></button>
     </div>
 </template>
 <template id="@nameof(ImageContent)">
@@ -91,6 +100,7 @@
             ​<picture>
                 <img src="..." class="img-fluid img-thumbnail" alt="...">
             </picture>
+            <hr />
         </div>
     </div>
 </template>

@@ -10,8 +10,8 @@ using Portfolio.Data;
 namespace Portfolio.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180710112828_SectionBuilder")]
-    partial class SectionBuilder
+    [Migration("20180715170617_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
