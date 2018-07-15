@@ -88,13 +88,16 @@ namespace Portfolio.Areas.Articles.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string json)
         {
-            SectionBuilder builder= Data.SectionBuilder.Deserialize(json);
+            SectionBuilder builder = Data.SectionBuilder.Deserialize(json);
             var section = _context.Section.Find(builder.Id);
             section.Title = builder.Title;
             section.Content = json;
             //ToDo Validate json
             await _context.SaveChangesAsync();
-            return View(builder);
+            return RedirectToAction("Edit", "Articles", new
+            {
+                id = section.ArticleId
+            });
         }
 
         [HttpPost]
@@ -126,12 +129,15 @@ namespace Portfolio.Areas.Articles.Controllers
             return "Error";
 
         }
-       
+
 
         // GET: Sections/Create
-        public IActionResult Create(int? id)
+        public IActionResult Create(int id)
         {
-            return View();
+            return View(new Section()
+            {
+                ArticleId = id
+            });
         }
 
         // POST: Sections/Create
@@ -139,19 +145,21 @@ namespace Portfolio.Areas.Articles.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int id, [Bind("SectionId,Title,Content,Example")] Section section)
+        public async Task<IActionResult> Create([Bind("ArticleId, SectionId,Title,Content,Example")] Section section)
         {
-            var article = await _context.Articles.FindAsync(id);
+            var article = await _context.Articles.FindAsync(section.ArticleId);
             await _context.Entry(article).Collection(x => x.Sections).LoadAsync();
 
             section.Index = article.Sections.Count == 0 ? 0 : article.Sections.ToList().Max(x => x.Index) + 1;
-            section.ArticleId = id;
             if (ModelState.IsValid)
             {
                 _context.Add(section);
                 await _context.SaveChangesAsync();
                 //TODO type check
-                return RedirectToAction(nameof(Index), new { id });
+                return RedirectToAction("Edit", "Articles", new
+                {
+                    id = section.ArticleId
+                });
             }
             return View(section);
         }
@@ -171,7 +179,6 @@ namespace Portfolio.Areas.Articles.Controllers
             {
                 return NotFound();
             }
-
             return View(section);
         }
 
@@ -183,7 +190,7 @@ namespace Portfolio.Areas.Articles.Controllers
             var section = await _context.Section.FindAsync(id);
             _context.Section.Remove(section);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index), new { id = section.ArticleId });
+            return RedirectToAction("Edit", "Articles", new { id = section.ArticleId });
         }
 
         private bool SectionExists(int id)

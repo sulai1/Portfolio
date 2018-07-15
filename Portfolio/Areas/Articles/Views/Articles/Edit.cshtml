@@ -2,9 +2,11 @@
 @using Portfolio.Areas.Articles.Data
 @{
     ViewData["Title"] = "Edit";
+    ViewData["ArticleId"] = Model.ArticleId;
 }
 
 <h2>Edit Article</h2>
+
 <hr />
 <div class="row">
     <div class="col">
@@ -33,12 +35,7 @@
         </form>
         <hr />
         <h2>Sections</h2>
-        @foreach (var item in Model.Sections){
-            var sb = SectionBuilder.Deserialize(item.Content);
-            sb.Id = item.SectionId;
-            sb.Title = item.Title;
-            @await Html.PartialAsync("../Sections/Edit", sb);
-        }
+        @await Html.PartialAsync("../Sections/Index",Model)
     </div>
 </div>
 
