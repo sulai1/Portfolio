@@ -17,7 +17,6 @@ namespace Portfolio.Areas.Articles.Models
         [Required]
         public string Title { get; set; }
         public string Content { get; set; }
-        public string Example { get; set; }
         
         [ForeignKey("Article")]
         public int ArticleId { get; set; }
