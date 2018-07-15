@@ -203,13 +203,7 @@ abstract class IContentBuilder<T extends IContent>{
                 down(element);
             });
             control.find(".delete").click(function () {
-                if (confirm("Delete Element?")) {
-                    element.remove();
-                    for (var i = index + 1; i < builder.content.length; i++) {
-                        $("Content" + i).attr("id", "Content" + (i - 1));
-                    }
-                    builder.content.splice(index, 1);
-                }
+                remove(element);
             });
             this.bindEdit(element, content);
         }
@@ -359,6 +353,17 @@ class ImageBuilder extends IContentBuilder<ImageContent> {
             request.send('name:test.png;' + reader.result);
         };
         reader.readAsDataURL(file);
+    }
+}
+
+function remove(element: JQuery<HTMLElement>) {
+    var index = parseInt(element.attr("id").match(/\d*$/)[0]);
+    if (confirm("Delete Element?")) {
+        element.remove();
+        for (var i = index + 1; i < builder.content.length; i++) {
+            $("#Content" + i).attr("id", "Content" + (i - 1));
+        }
+        builder.content.splice(index, 1);
     }
 }
 //#endregion

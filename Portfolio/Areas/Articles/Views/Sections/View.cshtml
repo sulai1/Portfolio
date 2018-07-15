@@ -4,13 +4,13 @@
 
     ViewData["Title"] = Model.Title;
     var json = Html.Raw(Model.Serialize());
-    var back = @TempData["Back"];
+    var back = ViewData["Back"];
 
 }
 @await Html.PartialAsync("Content")
 <body>
     <h2>@Model.Title</h2>
-    <div class="breadcrumb" id="container">
+    <div  id="container">
         <script data-main="/js/config" src="~/lib/require.js"></script>
         <script>
             var draw;
